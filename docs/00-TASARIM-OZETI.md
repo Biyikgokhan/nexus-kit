@@ -54,7 +54,7 @@ Var (bugün kullanılabilir gerçekler):
 - Fudō Blender hattı: web koordinatı `(x, height, depth)`, adlandırılmış eser slotları, zone + malzeme batch, GLB dışa aktarma.
 
 Yok (bu tasarımla yapılacak):
-- Tarayıcı sihirbazı sayfası (`/nexus/kur/`), CLI paketi, `check` denetçisi, kayıt deposu, harness dosyalarının yayını, EN çeviri.
+- Tarayıcı sihirbazı sayfası (`/nexus/#kur`), CLI paketi, `check` denetçisi, kayıt deposu, harness dosyalarının yayını, EN çeviri.
 - Ajanın kroki yorumu için görüntü girişi (Claude API / Ollama vision) adaptörü.
 - Sunucular arası federasyon, domain sahiplik challenge'ı, imzalı takip (yol haritasında; bu paket bunları iddia etmez).
 

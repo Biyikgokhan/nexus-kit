@@ -1,5 +1,7 @@
 # Nexus Kit — kendi 3B mekânını kur, haritaya çık
 
+**EN —** Nexus Kit is the open-source setup wizard and AI harness behind [fudo.tattoo](https://fudo.tattoo) and [gokhanbiyik.com](https://gokhanbiyik.com): turn a few phone photos and a hand-drawn sketch into a walkable, optimised Three.js place on your own domain, with your own keys, then appear as a point on the [Nexus atlas](https://gokhanbiyik.com/nexus/). Two paths: a browser wizard for non-technical owners and a CLI + Blender pipeline for modellers. Docs are in Turkish for now; an English translation is on the [roadmap](ROADMAP.md). Not on npm yet: `npx github:Biyikgokhan/nexus-kit doctor`.
+
 ![Nexus atlası: LOD küre, mavi atmosfer, Karagümrük'e iniş](docs/img/atlas-space.png)
 
 > **Rehberin Satori.** Karagümrük atölyesinin uçan droidi sihirbazda seni karşılar; 30 saniyelik tanıtımı izle: [docs/video/nexus-kit-tanitim.mp4](docs/video/nexus-kit-tanitim.mp4) · [GIF önizleme](docs/video/nexus-kit-tanitim.gif)
@@ -8,7 +10,7 @@
 
 Nexus Kit, [fudo.tattoo](https://fudo.tattoo) ve [biyikgokhan.com](https://gokhanbiyik.com) (KG Atelier) dünyalarının arkasındaki yöntemin açık kaynak kurulum sihirbazı ve yapay zekâ harness paketidir. İki site de 3D modelleme aracının önerdiği hazır kalıplarla değil, gerçek fotoğraf + kroki + sahibinin anlatımıyla ve optimize edilmiş bir Three.js stilizasyonuyla kuruldu. Bu paket o yöntemi herkesin kullanabileceği hâle getirir.
 
-Bu klasör `kg_atelier` deposu içinde tasarlandı; açık kaynak yayında **kendi başına bir repo** olacak (`nexus-kit`). Aşağıdaki her şey Türkçe tasarlandı; İngilizce çeviri yol haritasında.
+Belgeler Türkçe yazıldı; İngilizce çeviri yol haritasında.
 
 ## Ekolün örnekleri
 
@@ -42,7 +44,7 @@ Bu klasör `kg_atelier` deposu içinde tasarlandı; açık kaynak yayında **ken
 Kolay yol:
 
 ```text
-1. https://gokhanbiyik.com/nexus/kur/  (statik sihirbaz; hiçbir şey yüklenmez)
+1. https://gokhanbiyik.com/nexus/#kur  (statik sihirbaz; hiçbir şey yüklenmez)
 2. 3 fotoğraf + 1 kroki fotoğrafı seç
 3. Krokinin üstüne masa / koltuk / bitki / çerçeve / kapı sürükle
 4. Canlı 3B önizleme → "Paketi indir"
@@ -53,11 +55,12 @@ Kolay yol:
 Modelci yolu:
 
 ```bash
-npx nexus-kit init my-place       # gereksinim kontrolü + proje iskeleti
-npx nexus-kit sketch              # kroki + fotoğrafları oda planına çevir (AI isteğe bağlı)
-npx nexus-kit blender             # Blender 4.5 background hattıyla GLB üret
-npx nexus-kit check               # bütçe, şema, .well-known, ekol kuralları
-npx nexus-kit publish             # kendi alan adına yayın ve kayıt başvurusu
+git clone https://github.com/Biyikgokhan/nexus-kit && cd nexus-kit && npm test   # ya da: npx github:Biyikgokhan/nexus-kit <komut>
+node bin/nexus-kit.mjs init my-place   # gereksinim kontrolü + proje iskeleti
+node bin/nexus-kit.mjs sketch              # kroki + fotoğrafları oda planına çevir (AI isteğe bağlı)
+node bin/nexus-kit.mjs blender             # Blender 4.5 background hattıyla GLB üret
+node bin/nexus-kit.mjs check               # bütçe, şema, .well-known, ekol kuralları
+node bin/nexus-kit.mjs publish             # kendi alan adına yayın ve kayıt başvurusu
 ```
 
 Durum (0.1): `doctor`, `init`, `manifest`, `check`, `blender`, `harness`, `publish` çalışıyor (`bin/nexus-kit.mjs`, testler `tests/`). `sketch` (kroki → plan) ve `check --browser` yol haritasında. npm'de henüz yayımlanmadı; bu depoyu klonlayıp `node bin/nexus-kit.mjs <komut>` ya da `npm link` ile kullan. Kolay yol sihirbazı atlas sitesinde: https://gokhanbiyik.com/nexus/#kur (yayın bekliyor). Komut sözleşmesi: [docs/03-SIHIRBAZ-MODELCI-YOLU.md](docs/03-SIHIRBAZ-MODELCI-YOLU.md).

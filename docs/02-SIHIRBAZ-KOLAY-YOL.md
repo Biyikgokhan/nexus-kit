@@ -1,6 +1,6 @@
 # Kolay yol — tarayıcı sihirbazı (bilişime uzak kullanıcı)
 
-Adres: `https://gokhanbiyik.com/nexus/kur/` (statik sayfa; aynı sayfa ZIP olarak indirilip çevrimdışı da açılabilir). Teknik altyapı: Fudō `src/nexus/room-view.js` + `geometry.js createRoom()` + `data.js validateNode()` + `tools/nexus-zip.mjs`'in tarayıcı sürümü. Hiçbir adım sunucuya veri göndermez.
+Adres: `https://gokhanbiyik.com/nexus/#kur` (statik sayfa; aynı sayfa ZIP olarak indirilip çevrimdışı da açılabilir). Teknik altyapı: Fudō `src/nexus/room-view.js` + `geometry.js createRoom()` + `data.js validateNode()` + `tools/nexus-zip.mjs`'in tarayıcı sürümü. Hiçbir adım sunucuya veri göndermez.
 
 ## Tasarım ilkeleri (sihirbazın kendini net ifade etmesi)
 
