@@ -6,9 +6,9 @@
 
 | Repo | İçerik | Lisans |
 | --- | --- | --- |
-| `nexus-kit` | bu klasör: sihirbaz (tarayıcı + CLI), harness, şema, belgeler, `engine/` vendored çekirdek | MIT |
-| `nexus-registry` | topluluk kaydı, issue şablonu, CI doğrulama, politika | MIT (veri: CC0 beyan; her mekân kendi manifestinin sahibi) |
-| `nexus-atlas` | atlas sayfasının açık kaynağı (Fudō `src/nexus/*` + geodata) | MIT; Natural Earth kamu malı |
+| `nexus-kit` | bu klasör: sihirbaz (tarayıcı + CLI), harness, şema, belgeler, `engine/` vendored çekirdek | araç GPL-3.0-or-later; `templates/` ve `schema/` Apache-2.0 (bkz. NOTICE.md) |
+| `nexus-registry` | topluluk kaydı, issue şablonu, CI doğrulama, politika | MIT (veri: CC-BY-4.0; her mekân kendi manifestinin sahibi) |
+| `nexus-atlas` | atlas sayfasının açık kaynağı (Fudō `src/nexus/*` + geodata) | motor Apache-2.0; Natural Earth kamu malı |
 
 KG Atelier ve Fudō siteleri **örnek** olarak bağlanır; kendileri açılmaz (kişisel içerik, fotoğraflar, eserler, sahibin servisleri). `nexus-kit/examples/` içinde iki sitenin **manifestleri** ve `place.json` karşılıkları bulunur, kaynak kodu değil.
 
