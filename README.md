@@ -1,10 +1,26 @@
 # Nexus Kit — kendi 3B mekânını kur, haritaya çık
 
+![Nexus atlası: LOD küre, mavi atmosfer, Karagümrük'e iniş](docs/img/atlas-space.png)
+
+> **Rehberin Satori.** Karagümrük atölyesinin uçan droidi sihirbazda seni karşılar; 30 saniyelik tanıtımı izle: [docs/video/nexus-kit-tanitim.mp4](docs/video/nexus-kit-tanitim.mp4) · [GIF önizleme](docs/video/nexus-kit-tanitim.gif)
+
 > Birkaç telefon fotoğrafı ve kâğıda çizilmiş bir kroki ile, kendi alan adında yaşayan, gezilebilir bir Three.js mekânı. Sonra Nexus atlasında bir nokta.
 
 Nexus Kit, [fudo.tattoo](https://fudo.tattoo) ve [biyikgokhan.com](https://gokhanbiyik.com) (KG Atelier) dünyalarının arkasındaki yöntemin açık kaynak kurulum sihirbazı ve yapay zekâ harness paketidir. İki site de 3D modelleme aracının önerdiği hazır kalıplarla değil, gerçek fotoğraf + kroki + sahibinin anlatımıyla ve optimize edilmiş bir Three.js stilizasyonuyla kuruldu. Bu paket o yöntemi herkesin kullanabileceği hâle getirir.
 
 Bu klasör `kg_atelier` deposu içinde tasarlandı; açık kaynak yayında **kendi başına bir repo** olacak (`nexus-kit`). Aşağıdaki her şey Türkçe tasarlandı; İngilizce çeviri yol haritasında.
+
+## Ekolün örnekleri
+
+| KG Atelier — Karagümrük gece atölyesi | Fudō — Kozyatağı dövme stüdyosu |
+| --- | --- |
+| ![KG Atelier sokak](docs/img/kg-atelier-street.png) | ![Fudō diorama](docs/img/fudo.png) |
+| [gokhanbiyik.com](https://gokhanbiyik.com) · birinci şahıs, sokaktan içeri | [fudo.tattoo](https://fudo.tattoo) · diorama, tezgâha yaklaş |
+
+| Kolay yol sihirbazı (tarayıcı) | Mutfak arkası yazıları |
+| --- | --- |
+| ![Kendi mekânını kur — 6 adım](docs/img/atlas-wizard.png) | ![Vaka analizleri](docs/img/case-studies.png) |
+| [gokhanbiyik.com/nexus/#kur](https://gokhanbiyik.com/nexus/#kur) | [gokhanbiyik.com/case-studies](https://gokhanbiyik.com/case-studies/) |
 
 ## Kime, ne veriyor
 
