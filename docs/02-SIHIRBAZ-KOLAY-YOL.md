@@ -142,6 +142,8 @@ Sağ üst "Yardımcı: bağlı değil" → panel:
 
 Panel metni: "Bu anahtar yalnız bu sekmede kalır ve doğrudan seçtiğin sağlayıcıya gider. Nexus Kit'in sunucusu yok. Ücretleri sağlayıcın hesabından öder."
 
+Uygulandı (20 Eylül 2026): Fudō `src/nexus/helper.js` + `src/nexus/assist.js` (kitten kopya). Düğmeler: 01'de "hikâyeyi yaz" (üç öneri, biri seçilir), 03'te "krokiyi oku" (öneri listelenir, "Öneriyi krokiye uygula" ile ızgaraya oturur, hücre başına bir nesne), 04'te "ekol denetimi" (kırmızı/sarı/yeşil bulgular). Astra seçeneği panelde henüz yok (tasarım).
+
 Ajan görevleri (harness `nexus-place` skill'i): `describe` (hikâye), `sketch-to-plan` (kroki → items), `label` (nesne etiketleri), `review` (ekol denetimi: "3 nesne var, portal yok; bir kapı ekle"). Her görev sıkı JSON döndürür; sihirbaz JSON dışını atar.
 
 ## Sihirbazın reddettiği şeyler

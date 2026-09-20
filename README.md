@@ -63,9 +63,11 @@ node bin/nexus-kit.mjs check               # bütçe, şema, .well-known, ekol k
 node bin/nexus-kit.mjs publish             # kendi alan adına yayın ve kayıt başvurusu
 ```
 
-Durum (0.1): `doctor`, `init`, `manifest`, `check`, `blender`, `harness`, `publish` çalışıyor (`bin/nexus-kit.mjs`, testler `tests/`). `sketch` (kroki → plan) ve `check --browser` yol haritasında. npm'de henüz yayımlanmadı; bu depoyu klonlayıp `node bin/nexus-kit.mjs <komut>` ya da `npm link` ile kullan. Kolay yol sihirbazı atlas sitesinde: https://gokhanbiyik.com/nexus/#kur (yayın bekliyor). Komut sözleşmesi: [docs/03-SIHIRBAZ-MODELCI-YOLU.md](docs/03-SIHIRBAZ-MODELCI-YOLU.md).
+Durum (0.2): `doctor`, `init`, `manifest`, `check`, `blender`, `harness`, `publish`, `sketch` çalışıyor (`bin/nexus-kit.mjs`, testler `tests/`). `sketch` üç yoldan plan alır: `--show` (ASCII plan), `--grid=reference/plan.txt` (çevrimdışı harf ızgarası), `--ai` (harness: Claude API, Ollama, özel uç ya da komut) ve `reference/navigation-draft.json` yazar. Yardımcı istemcisi `harness/client.mjs` (bağımlılıksız, tarayıcıda ve Node'da aynı dosya). `check --browser` yol haritasında. npm'de henüz yayımlanmadı; bu depoyu klonlayıp `node bin/nexus-kit.mjs <komut>` ya da `npm link` ile kullan. Kolay yol sihirbazı atlas sitesinde: https://gokhanbiyik.com/nexus/#kur (yayın bekliyor). Komut sözleşmesi: [docs/03-SIHIRBAZ-MODELCI-YOLU.md](docs/03-SIHIRBAZ-MODELCI-YOLU.md).
 
 ## Belgeler
+
+English overview and quick start: [docs/en/README.md](docs/en/README.md).
 
 | Dosya | İçerik |
 | --- | --- |

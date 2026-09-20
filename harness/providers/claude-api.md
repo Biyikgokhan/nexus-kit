@@ -2,11 +2,11 @@
 
 Anahtar `.env.local › ANTHROPIC_API_KEY` (CLI) ya da tarayıcı `sessionStorage` (kolay yol). Kit sunucusu yok; istek doğrudan `api.anthropic.com`'a gider. Ücret kullanıcının hesabından.
 
-## client.mjs sözleşmesi (uygulanacak)
+## client.mjs sözleşmesi (uygulandı: `harness/client.mjs`)
 
 ```js
 import {assist} from './client.mjs';
-const out = await assist({provider:'claude-api', model:process.env.NEXUS_AI_MODEL, task:'sketch-to-plan', input, images:['reference/sketch.jpg']});
+const out = await assist({provider:'claude-api', config:{apiKey:process.env.ANTHROPIC_API_KEY, model:process.env.NEXUS_AI_MODEL}, task:'sketch-to-plan', input, images:[{mediaType:'image/jpeg', data:base64}]});
 // out = {task, ok, result, notes, confidence}  — JSON dışı metin atılır, şema doğrulanır
 ```
 

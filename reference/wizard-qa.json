@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-20",
+  "build": "fudo/gta vite.nexus.config.js --mode public → dist-nexus-public, served by python http.server on 127.0.0.1:5187",
+  "entry": "nexus.html#kur",
+  "browser": "Claude desktop browser pane (Chromium), viewport emulation",
+  "viewports": {
+    "320x640": {"horizontalOverflow": false, "dialogWidth": 292, "steps": ["01", "03", "04"], "notes": "tabs wrap to two lines, buttons stack; helper toggle sits under the title"},
+    "390x844": {"horizontalOverflow": false, "helperPanel": "opens inline above the steps, all fields reachable"},
+    "1440x900": {"horizontalOverflow": false, "notes": "dialog centred, 3D preview beside the grid"}
+  },
+  "reducedMotion": "src/nexus/style.css @media(prefers-reduced-motion:reduce) disables transitions and animations",
+  "console": {"wizardErrors": 0, "testInducedErrors": ["ERR_UNSAFE_PORT (deliberate dead Ollama address 127.0.0.1:9)", "404 THREE-LICENSE (missing only in the local static copy)", "ERR_CONNECTION_ABORTED (local receiver PUT without CORS)"]},
+  "endToEnd": {
+    "helperPanel": "Ollama at a dead port → 'Yardımcı yanıt veremedi: Failed to fetch' shown inline, button re-enabled; settings persisted: sessionStorage {provider:'ollama'}, localStorage {url,model}",
+    "package": {"files": 25, "bytes": 1354046, "status": "Paket indi: 25 dosya."},
+    "manifest": "downloaded via 'Yalnız mekân dosyasını indir', copied into a temp project as public/nexus.json + .well-known/nexus.json",
+    "kitCheck": "YELLOW — [portal] no door yet, [report] no Blender report; no red findings"
+  }
+}

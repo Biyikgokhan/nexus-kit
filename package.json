@@ -1,6 +1,6 @@
 {
   "name": "nexus-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Kendi 3B mekânını fotoğraf ve krokiden kur, kendi alan adında yayınla, Nexus atlasında görün. Kurulum sihirbazı, ekol denetçisi ve yapay zekâ harness'ı.",
   "license": "GPL-3.0-or-later",
   "type": "module",

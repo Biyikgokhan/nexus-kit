@@ -14,8 +14,8 @@ Sıra, KG Atelier'in gerçek sürüm mantığıyla: önce yürünebilir iskelet,
 - [x] Atlasın mevcut kurucusu genişletildi (`nexus.html#kur`, `src/nexus/wizard.js`, `zip-browser.js`): 04 İndir · 05 Yayınla · 06 Haritaya çık; tarayıcı ZIP motor paketini yayının kendi Vite manifestinden toplar.
 - [x] Izgara, palet, etiket, kapı, 3B önizleme (mevcut kurucu). [ ] Kroki 4-nokta düzeltme.
 - [x] Yayın sekmeleri (Vercel/Netlify/Cloudflare/GitHub Pages/cPanel), `.well-known` tarayıcı kontrolü.
-- [ ] Yardımcı paneli: Claude API (sessionStorage), Ollama; JSON görev zarfı.
-- [ ] 320/390/1440 px QA, reduced-motion, console sıfır hata; `reference/wizard-qa.json`.
+- [x] Yardımcı paneli: Claude API (sessionStorage), Ollama (adres localStorage); describe · sketch-to-plan · review; JSON görev zarfı (`harness/client.mjs`, Fudō `src/nexus/helper.js`).
+- [x] 320/390/1440 px QA, reduced-motion, sihirbazın kendi konsol hatası sıfır; uçtan uca ZIP → kit `check` sarı (`reference/wizard-qa.json`, 20 Eylül 2026).
 
 ## 0.3 — Kayıt deposu ve atlas bağı
 
@@ -25,7 +25,7 @@ Sıra, KG Atelier'in gerçek sürüm mantığıyla: önce yürünebilir iskelet,
 
 ## 0.4 — Modelci yolu (CLI)
 
-- [x] `nexus-kit`: doctor · init · manifest · check · blender · harness · publish (bağımlılıksız, testli). [ ] sketch · dev · package.
+- [x] `nexus-kit`: doctor · init · manifest · check · blender · harness · publish · sketch (--show / --grid / --ai; navigasyon taslağı) (bağımlılıksız, testli). [ ] dev · package.
 - [ ] `walk` şablonu: KG Atelier `src/engine/*` vendored + `place-*.js` iskeleti + testler.
 - [x] `templates/project/build_place.py`: place.json → kabuk + nesneler → zone/malzeme batch → GLB + rapor; Blender 4.5'te uçtan uca denendi. [ ] `--from-blend` gerçek dosyayla denenmedi.
 - [x] `check`: şema, .well-known, https, sırlar, yasak varlık, GLB/üçgen/malzeme/doku bütçesi, bevel/reduced-motion/AA ipuçları. [ ] navigasyon rotası, Playwright.
@@ -33,10 +33,10 @@ Sıra, KG Atelier'in gerçek sürüm mantığıyla: önce yürünebilir iskelet,
 
 ## 0.5 — Harness sağlayıcıları
 
-- [ ] `harness/client.mjs`: Claude API + Ollama; görüntü girişi; zaman aşımı; JSON zarfı doğrulama.
+- [x] `harness/client.mjs`: Claude API + Ollama + custom (https uç ya da komut); görüntü girişi (≤ 1,5 MB jpeg/png/webp); 60 s zaman aşımı; JSON zarfı çıkarma + görev başına şema doğrulama; Node ve tarayıcıda aynı dosya.
 - [x] Claude Code kurulum komutu (`harness --provider=claude-code`).
 - [ ] Astra ucu: sahibin geçidinde `POST /nexus/assist` (ziyaretçi sınıfı, davet anahtarı, kapasite); `astra.md` sözleşmesine göre.
-- [ ] `schema/harness-task.schema.json`.
+- [ ] `schema/harness-task.schema.json` (zarf şu an client.mjs içinde doğrulanıyor).
 
 ## 0.6 — Motor paketi ve canlı servis iskeleti
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // nexus-kit CLI — kendini açıklar, hiçbir adımı sessizce atlamaz, onaysız silmez veya yayınlamaz.
-import {readFileSync,writeFileSync,existsSync,mkdirSync,copyFileSync} from 'node:fs';
+import {readFileSync,writeFileSync,existsSync,mkdirSync,copyFileSync,readdirSync} from 'node:fs';
 import {join,resolve} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {createInterface} from 'node:readline/promises';
@@ -9,6 +9,10 @@ import {initProject} from '../lib/init.mjs';
 import {manifestFrom,validateManifest} from '../lib/manifest.mjs';
 import {checkProject,formatCheck} from '../lib/check.mjs';
 import {setupHarness,PROVIDERS} from '../lib/harness.mjs';
+import {asciiPlan,parseGridPlan,applyProposal,planToNavigation} from '../lib/plan.mjs';
+import {assist,PLACE_RULES} from '../lib/assist.mjs';
+import {readEnv,providerFrom} from '../lib/env.mjs';
+import {extname} from 'node:path';
 const argv=process.argv.slice(2),command=argv[0],flags=Object.fromEntries(argv.slice(1).filter(a=>a.startsWith('--')).map(a=>{const [k,v]=a.slice(2).split('=');return [k,v??true];})),positional=argv.slice(1).filter(a=>!a.startsWith('--'));
 const json=Boolean(flags.json),out=(text,data)=>console.log(json?JSON.stringify(data,null,2):text);
 const HELP=`nexus-kit — kendi 3B mekânını kur, haritaya çık
@@ -20,7 +24,8 @@ const HELP=`nexus-kit — kendi 3B mekânını kur, haritaya çık
   blender                Blender 4.5 background ile tools/build_place.py çalıştırır, GLB + rapor yazar
   harness --provider=X   ${PROVIDERS.join(' | ')}
   publish                yayın komutunu GÖSTERİR (çalıştırmaz), .well-known doğrular, KAYIT.md yazar
-  sketch                 kroki → plan (0.4'te; şimdilik place.json › room elle ya da harness ile)
+  sketch                 kroki → plan: --show (ASCII plan) · --grid=reference/plan.txt (çevrimdışı) · --ai (harness) · --yes yazar
+                         --long=<m> --door=south|north|east|west --notes="…" cevapları; reference/navigation-draft.json her seferinde yazılır
 
 Her komut --json ve --dry-run kabul eder.`;
 async function ask(question,fallback){if(flags.yes)return fallback;const rl=createInterface({input:process.stdin,output:process.stdout});try{const a=(await rl.question(`${question}${fallback?` [${fallback}]`:''} › `)).trim();return a||fallback;}finally{rl.close();}}
@@ -76,6 +81,30 @@ try{
   const repo=process.env.NEXUS_REGISTRY_REPO||'Biyikgokhan/nexus-registry';
   out(`Yayın komutu (SEN çalıştırırsın; kit çalıştırmaz):\n\n  npm run build\n  ${commands[target]||commands.manual}\n\nSonra doğrula:\n\n  curl -sI ${new URL('/.well-known/nexus.json',site).href}\n\nKayıt başvurusu (KAYIT.md yazıldı):\n\n  gh issue create --repo ${repo} --template place-registration.yml --title "Kayıt: ${m.name}" --body-file KAYIT.md\n`,{target,command:commands[target]||commands.manual,manifestUrl:new URL('/.well-known/nexus.json',site).href,registry:repo});
  }
- else if(command==='sketch'){out('sketch: kroki → plan dönüşümü 0.4 yol haritasında. Şimdilik: place.json › room.items elle (templates/place.example.json) ya da harness › nexus-place › sketch-to-plan görevi ile.',{ok:false,roadmap:'0.4'});process.exit(2);}
+ else if(command==='sketch'){
+  // Three ways in, one way out: place.json › room/stations/obstacles + reference/navigation-draft.json. Nothing is written without --yes (or --dry-run shows).
+  const root=resolve('.');let place=loadPlace(root);const room=place.room||{};
+  const write=(next,label)=>{const nav=planToNavigation(next);if(flags['dry-run']||!flags.yes){out(`${label}\n\n${asciiPlan(next)}\n\nNavigasyon taslağı: ${nav.obstacles.length} engel, ${Object.keys(nav.locations).length} bakış noktası${nav.warnings.length?'\n  ⚠ '+nav.warnings.join('\n  ⚠ '):''}\n\nYazmak için --yes ekle.`,{ok:true,dry:true,place:next,navigation:nav});return;}
+   mkdirSync(join(root,'.runtime','backup'),{recursive:true});copyFileSync(join(root,'place.json'),join(root,'.runtime','backup',`place-${new Date().toISOString().replace(/[:.]/g,'-')}.json`));
+   writeFileSync(join(root,'place.json'),JSON.stringify(next,null,2)+'\n');mkdirSync(join(root,'reference'),{recursive:true});writeFileSync(join(root,'reference','navigation-draft.json'),JSON.stringify(nav,null,2)+'\n');
+   out(`${label}\n\n${asciiPlan(next)}\n\nplace.json yazıldı (yedek .runtime/backup/), reference/navigation-draft.json yazıldı.${nav.warnings.length?'\n  ⚠ '+nav.warnings.join('\n  ⚠ '):''}\n\nSonraki: npx nexus-kit manifest · npx nexus-kit check`,{ok:true,place:next,navigation:nav});};
+  if(flags.grid){const file=resolve(String(flags.grid));if(!existsSync(file))throw new Error(`Plan dosyası yok: ${file}`);const width=Number(flags.long||room.width)||8,depth=Number(room.depth)||6;const items=parseGridPlan(readFileSync(file,'utf8'),{width,depth});
+   write(applyProposal(place,{room:{width,depth,items}}),`Izgara planı okundu: ${items.length} nesne (${file}). Etiketleri place.json › room.items › label alanına yaz.`);}
+  else if(flags.ai){
+   const env=readEnv(root),prov=providerFrom(env);if(!prov)throw new Error('Yardımcı bağlı değil: .env.local › NEXUS_AI_PROVIDER ve anahtar/model (npx nexus-kit harness --provider=claude-api|ollama).');
+   const images=[];const sketchFile=['reference/sketch.jpg','reference/sketch.jpeg','reference/sketch.png','reference/sketch.webp'].map(f=>join(root,f)).find(existsSync);
+   const toData=f=>{const type={'.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp'}[extname(f).toLowerCase()];const bytes=readFileSync(f);if(bytes.length>1.4e6)throw new Error(`${f} 1,4 MB'ı aşıyor; küçült.`);return {mediaType:type,data:bytes.toString('base64')};};
+   if(sketchFile)images.push(toData(sketchFile));const photosDir=join(root,'reference','photos');if(existsSync(photosDir))for(const f of readdirSync(photosDir).filter(f=>/\.(jpe?g|png|webp)$/i.test(f)).slice(0,3))images.push(toData(join(photosDir,f)));
+   const input={name:place.name,kind:place.kind,room:{width:Number(flags.long||room.width)||8,depth:Number(room.depth)||6,door:flags.door||room.door||'south'},answers:{longSide:flags.long||null,door:flags.door||null,notes:flags.notes||null},existingItems:(room.items||[]).map(o=>({id:o.id,type:o.type,label:o.label})),images:{sketch:Boolean(sketchFile),photos:images.length-(sketchFile?1:0)}};
+   if(!images.length)console.log('· Kroki ya da fotoğraf yok (reference/sketch.jpg, reference/photos/); yardımcı yalnız cevaplardan çalışacak.');
+   let system=PLACE_RULES;try{system=readFileSync(join(root,'harness','AGENTS.md'),'utf8')+'\n\n'+readFileSync(join(root,'harness','skills','nexus-place','SKILL.md'),'utf8');}catch{}
+   console.log(`· Yardımcı: ${prov.provider} · sketch-to-plan · ${images.length} görüntü`);
+   let r;if(prov.provider==='command'){const run=spawnSync(prov.config.command,{input:JSON.stringify({task:'sketch-to-plan',input,system}),encoding:'utf8',shell:true,timeout:120000});const {extractJson,validateResult}=await import('../lib/assist.mjs');const parsed=extractJson(run.stdout||'');const result=parsed?.result||parsed;const errors=result?validateResult('sketch-to-plan',result,input.room):['komut JSON döndürmedi'];r=errors.length?{ok:false,error:errors.join(' ')}:{ok:true,result,notes:parsed.notes||[],confidence:parsed.confidence??null};}
+   else r=await assist({provider:prov.provider,config:prov.config,task:'sketch-to-plan',input,images,system});
+   if(!r.ok){out(`Yardımcı öneri veremedi: ${r.error}\nYardımcısız devam: --grid=reference/plan.txt ya da place.json › room.items elle.`,{ok:false,error:r.error});process.exit(2);}
+   write(applyProposal(place,r.result),`Yardımcının önerisi (güven ${r.confidence==null?'—':Math.round(r.confidence*100)+'%'}): ${r.result.room.items.length} nesne${r.notes.length?'\n  · '+r.notes.join('\n  · '):''}`);}
+  else{const nav=planToNavigation(place);if(flags.yes&&!flags['dry-run']){mkdirSync(join(root,'reference'),{recursive:true});writeFileSync(join(root,'reference','navigation-draft.json'),JSON.stringify(nav,null,2)+'\n');}
+   out(`${asciiPlan(place)}\n\nNavigasyon taslağı: ${nav.obstacles.length} engel, ${Object.keys(nav.locations).length} bakış noktası${nav.warnings.length?'\n  ⚠ '+nav.warnings.join('\n  ⚠ '):''}${flags.yes&&!flags['dry-run']?'\nreference/navigation-draft.json yazıldı.':''}\n\nPlanı değiştirmek için: --grid=reference/plan.txt (T masa · S koltuk · P bitki · F eser · O portal) ya da --ai`,{ok:true,place,navigation:nav});}
+ }
  else{console.error(`Bilinmeyen komut: ${command}\n\n${HELP}`);process.exit(1);}
 }catch(e){console.error('✖ '+e.message);process.exit(1);}
