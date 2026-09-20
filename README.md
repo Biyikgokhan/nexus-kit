@@ -1,6 +1,6 @@
 # Nexus Kit — kendi 3B mekânını kur, haritaya çık
 
-**EN —** Nexus Kit is the open-source setup wizard and AI harness behind [fudo.tattoo](https://fudo.tattoo) and [gokhanbiyik.com](https://gokhanbiyik.com): turn a few phone photos and a hand-drawn sketch into a walkable, optimised Three.js place on your own domain, with your own keys, then appear as a point on the [Nexus atlas](https://gokhanbiyik.com/nexus/). Two paths: a browser wizard for non-technical owners and a CLI + Blender pipeline for modellers. Docs are in Turkish for now; an English translation is on the [roadmap](ROADMAP.md). Not on npm yet: `npx github:Biyikgokhan/nexus-kit doctor`.
+**EN —** Nexus Kit is the open-source setup wizard and AI harness behind [fudo.tattoo](https://fudo.tattoo) and [gokhanbiyik.com](https://gokhanbiyik.com): turn a few phone photos and a hand-drawn sketch into a walkable, optimised Three.js place on your own domain, with your own keys, then appear as a point on the [Nexus atlas](https://gokhanbiyik.com/nexus/). Two paths: a browser wizard for non-technical owners and a CLI + Blender pipeline for modellers. Docs are in Turkish for now; an English translation is on the [roadmap](ROADMAP.md). Licensing follows the Blender model: the tooling is GPL-3.0, the templates/schema/protocol are Apache-2.0 (whatever you build with it is yours), the names are trademarks. Not on npm yet: `npx github:Biyikgokhan/nexus-kit doctor`.
 
 ![Nexus atlası: LOD küre, mavi atmosfer, Karagümrük'e iniş](docs/img/atlas-space.png)
 
@@ -96,4 +96,11 @@ nexus-kit/
 
 ## Lisans
 
-Kit kodu ve belgeleri MIT (Fudō `src/nexus/LICENSE` ile aynı). Fotoğrafların, eserlerin, logon ve alan adın senindir; paket bunlara hak vermez. Three.js MIT, fontlar SIL OFL, Natural Earth kamu malı. Ayrıntı: [docs/07-TOPLULUK.md](docs/07-TOPLULUK.md).
+Blender modeli: **araç açık, mekân senin, ad bizim.**
+
+- Kurulum sihirbazı, denetçi ve harness (`bin/`, `lib/`, `harness/`, belgeler): **GPL-3.0-or-later**. Geliştirip dağıtırsan kaynağı da paylaşırsın; kapalı bir "Nexus Kit Pro" olmaz.
+- Şablonlar, `nexus-interlink` şeması ve protokol (`templates/`, `schema/`, protokol belgesi): **Apache-2.0**. Kitle kurduğun site, manifest ve modeller **senindir**; hiçbir açık kaynak yükümlülüğü taşımaz. Protokolü kendi motorunla da uygulayabilirsin.
+- "Nexus Interlink", "Nexus Kit", "Satori" adları ve logo lisans kapsamı dışındadır ([TRADEMARKS.md](TRADEMARKS.md)). Çatal serbest, ad değişir.
+- Fotoğrafların, eserlerin, logon ve alan adın senindir; paket bunlara hak vermez ([ASSETS.md](ASSETS.md)). Three.js MIT, fontlar SIL OFL, Natural Earth kamu malı ([THIRD-PARTY.md](THIRD-PARTY.md)).
+
+Kapsam tablosu: [NOTICE.md](NOTICE.md). Telif: © 2026 Gökhan Bıyık.

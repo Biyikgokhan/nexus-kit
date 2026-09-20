@@ -1,6 +1,6 @@
 # Varlıklar ve haklar
 
-Bu paket **kod ve belge** dağıtır; MIT lisansı yalnız bunları kapsar.
+Bu paket **kod ve belge** dağıtır; GPL-3.0 (araç) ve Apache-2.0 (şablon/şema) lisansları yalnız bunları kapsar.
 
 - Fotoğrafların, krokin, eserlerin, logon, alan adın ve mekânının adı senindir. Kit bunlara hiçbir hak vermez, istemez, saklamaz.
 - Sihirbazın ürettiği paket (ZIP) senin fotoğraflarını içerir; onu nereye yükleyeceğine sen karar verirsin.
