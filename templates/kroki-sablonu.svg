@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 1188" width="840" height="1188" font-family="DM Sans, Barlow, sans-serif">
+  <title>Nexus Kit — kroki şablonu (A4). Yazdır, kuşbakışı çiz, eşyaları numaralandır, telefonla çek.</title>
+  <rect width="840" height="1188" fill="#eae6d8"/>
+  <g fill="#22362e">
+    <text x="48" y="64" font-size="26" font-weight="700" letter-spacing="2">NEXUS KİT · KROKİ</text>
+    <text x="48" y="92" font-size="13" letter-spacing="1.5">KUŞBAKIŞI ÇİZ · EŞYALARI NUMARALA · KÂĞIDIN DÖRT KÖŞESİ GÖRÜNSÜN</text>
+  </g>
+  <!-- köşe işaretleri: sihirbazın 4-nokta perspektif düzeltmesi için -->
+  <g fill="none" stroke="#bd4834" stroke-width="4">
+    <path d="M48 128 h40 M48 128 v40"/><path d="M792 128 h-40 M792 128 v40"/>
+    <path d="M48 900 h40 M48 900 v-40"/><path d="M792 900 h-40 M792 900 v-40"/>
+  </g>
+  <!-- ızgara: 1 kare ≈ 0,5 m önerisi -->
+  <g stroke="#c3c6b5" stroke-width="1">
+    <path d="M48 128 H792 M48 900 H792 M48 128 V900 M792 128 V900" stroke="#22362e" stroke-width="1.5"/>
+    <g id="v"><path d="M96 128 V900"/></g>
+    <use href="#v" x="48"/><use href="#v" x="96"/><use href="#v" x="144"/><use href="#v" x="192"/><use href="#v" x="240"/><use href="#v" x="288"/><use href="#v" x="336"/><use href="#v" x="384"/><use href="#v" x="432"/><use href="#v" x="480"/><use href="#v" x="528"/><use href="#v" x="576"/><use href="#v" x="624"/><use href="#v" x="672"/>
+    <g id="h"><path d="M48 176 H792"/></g>
+    <use href="#h" y="48"/><use href="#h" y="96"/><use href="#h" y="144"/><use href="#h" y="192"/><use href="#h" y="240"/><use href="#h" y="288"/><use href="#h" y="336"/><use href="#h" y="384"/><use href="#h" y="432"/><use href="#h" y="480"/><use href="#h" y="528"/><use href="#h" y="576"/><use href="#h" y="624"/><use href="#h" y="672"/>
+  </g>
+  <g fill="#22362e" font-size="12">
+    <text x="48" y="922">1 kare ≈ 0,5 m (ya da bir adımın yarısı). Duvarları kalın, kapıyı yay ile, pencereyi çift çizgiyle çiz.</text>
+    <text x="48" y="942">Eşyaları daire içine al ve numara ver: ① masa ② koltuk ③ bitki ④ tablo/ekran ⑤ başka dünyaya kapı …</text>
+  </g>
+  <g transform="translate(48 970)" fill="#22362e" font-size="13">
+    <text y="0" font-weight="700" letter-spacing="1.5">NUMARALAR</text>
+    <g stroke="#22362e" stroke-width="1" fill="none">
+      <path d="M0 14 h340 M0 44 h340 M0 74 h340 M0 104 h340 M0 134 h340 M0 164 h340"/>
+      <path d="M400 14 h344 M400 44 h344 M400 74 h344 M400 104 h344 M400 134 h344 M400 164 h344"/>
+    </g>
+    <text x="0" y="32">1 ·</text><text x="0" y="62">2 ·</text><text x="0" y="92">3 ·</text><text x="0" y="122">4 ·</text><text x="0" y="152">5 ·</text>
+    <text x="400" y="32">6 ·</text><text x="400" y="62">7 ·</text><text x="400" y="92">8 ·</text><text x="400" y="122">9 ·</text><text x="400" y="152">10 ·</text>
+  </g>
+  <g fill="#22362e" font-size="12">
+    <text x="48" y="1160">Uzun kenar: ______ m &#160;&#160; Kapı hangi kenarda: ______ &#160;&#160; Pencere: ______ &#160;&#160; Tavan: ______ m</text>
+  </g>
+  <text x="792" y="1160" text-anchor="end" font-size="11" fill="#bd4834" letter-spacing="1.5">NEXUS INTERLINK / 0.2</text>
+</svg>

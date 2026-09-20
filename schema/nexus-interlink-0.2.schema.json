@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gokhanbiyik.com/nexus/schema/nexus-interlink-0.2.schema.json",
+  "title": "Nexus Interlink manifest 0.2",
+  "description": "Bir mekânın kendi alan adı kökünde /nexus.json ve /.well-known/nexus.json olarak yayımladığı taşınabilir kayıt. Fudō src/nexus/data.js manifestFor() çıktısıyla uyumludur; nexus-kit ek alanları extensions.nexusKit altında taşır.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["protocol", "id", "name", "url", "kind", "description", "engine", "links"],
+  "properties": {
+    "protocol": {"const": "nexus-interlink/0.2"},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,39}$"},
+    "name": {"type": "string", "minLength": 2, "maxLength": 70},
+    "url": {"$ref": "#/$defs/httpsUrl"},
+    "kind": {"enum": ["studio", "garden", "simulation", "gallery", "shop"]},
+    "description": {"type": "string", "maxLength": 600},
+    "address": {"type": ["string", "null"], "maxLength": 250},
+    "coordinates": {
+      "type": ["object", "null"],
+      "required": ["latitude", "longitude"],
+      "additionalProperties": false,
+      "properties": {
+        "latitude": {"type": "number", "minimum": -90, "maximum": 90},
+        "longitude": {"type": "number", "minimum": -180, "maximum": 180}
+      }
+    },
+    "anchorId": {"type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9-]{1,39}$"},
+    "coordinateSource": {"type": ["string", "null"], "maxLength": 200},
+    "engine": {"type": "string", "maxLength": 40, "examples": ["fudo-three", "kg-walk", "fudo-stage"]},
+    "room": {
+      "type": ["object", "null"],
+      "required": ["width", "depth", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "width": {"type": "number", "minimum": 3, "maximum": 16},
+        "depth": {"type": "number", "minimum": 3, "maximum": 16},
+        "items": {
+          "type": "array",
+          "maxItems": 24,
+          "items": {
+            "type": "object",
+            "required": ["type", "x", "z"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {"type": "string", "maxLength": 40},
+              "type": {"enum": ["table", "plant", "frame", "portal", "seat"]},
+              "x": {"type": "number", "minimum": -8, "maximum": 8},
+              "z": {"type": "number", "minimum": -8, "maximum": 8},
+              "label": {"type": "string", "maxLength": 80},
+              "target": {"anyOf": [{"$ref": "#/$defs/httpsUrl"}, {"const": ""}]}
+            }
+          }
+        }
+      }
+    },
+    "photos": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {"type": "string", "pattern": "^data:image/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$", "maxLength": 1500000}
+    },
+    "links": {
+      "type": "array",
+      "maxItems": 60,
+      "items": {
+        "type": "object",
+        "required": ["object", "relation", "url"],
+        "additionalProperties": false,
+        "properties": {
+          "object": {"type": "string", "maxLength": 80},
+          "relation": {"enum": ["portal", "reference"]},
+          "url": {"$ref": "#/$defs/httpsUrl"}
+        }
+      }
+    },
+    "aliases": {"type": "array", "maxItems": 5, "items": {"$ref": "#/$defs/httpsUrl"}},
+    "extensions": {
+      "type": "object",
+      "properties": {
+        "nexusKit": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "version": {"type": "string"},
+            "path": {"enum": ["easy", "modeler"]},
+            "geometry": {"const": "photo-sketch-and-owner-layout-interpretation"},
+            "checkedAt": {"type": "string", "format": "date-time"},
+            "tag": {"type": "string", "maxLength": 60}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "httpsUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://[^\\s@/]+(/[^\\s]*)?$",
+      "maxLength": 500,
+      "description": "Yalnız https, kullanıcı adı/parola yok (safeUrl ile aynı)."
+    }
+  }
+}

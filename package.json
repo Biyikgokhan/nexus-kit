@@ -1,0 +1,16 @@
+{
+  "name": "nexus-kit",
+  "version": "0.1.0",
+  "description": "Kendi 3B mekânını fotoğraf ve krokiden kur, kendi alan adında yayınla, Nexus atlasında görün. Kurulum sihirbazı, ekol denetçisi ve yapay zekâ harness'ı.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {"nexus-kit": "bin/nexus-kit.mjs"},
+  "files": ["bin", "lib", "schema", "templates", "harness", "docs", "README.md", "ROADMAP.md", "LICENSE", "THIRD-PARTY.md", "ASSETS.md"],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "doctor": "node bin/nexus-kit.mjs doctor"
+  },
+  "engines": {"node": ">=22.12"},
+  "repository": {"type": "git", "url": "https://github.com/Biyikgokhan/nexus-kit"},
+  "keywords": ["three.js", "nexus-interlink", "3d", "wizard", "blender", "open-source"]
+}

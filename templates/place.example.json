@@ -1,0 +1,45 @@
+{
+  "$comment": "nexus-kit place.json örneği. Tek kaynak: manifest, config.js, navigation ve Blender hattı buradan türetilir. Sayılar KG Atelier'in gerçek yerleşiminden (5,8 × 6,8 m, oda merkezi koordinatı).",
+  "id": "kg-atelier",
+  "name": "Gökhan Bıyık — Açık Atölye",
+  "kind": "studio",
+  "url": "https://gokhanbiyik.com/",
+  "aliases": ["https://biyikgokhan.com/"],
+  "description": "Karagümrük’te bağımsız tasarım, hareketli görüntüler, etkileşim, 3D baskı ve IoT için açık atölye.",
+  "address": "Karagümrük, Viran Odaları Aralığı No:8, Fatih / İstanbul",
+  "coordinates": {"latitude": 41.027971, "longitude": 28.936427},
+  "coordinateSource": "Mekân sahibinin beyanı",
+  "engine": "kg-walk",
+  "geometry": "photo-sketch-and-owner-layout-interpretation",
+  "language": "tr",
+  "palette": {"paper": "#101522", "ink": "#e8e3cf", "accent": "#f36a4d", "sage": "#7dd1c7", "filament": "#d89632", "wood": "#76513c"},
+  "room": {
+    "width": 5.8,
+    "depth": 6.8,
+    "ceiling": 3.23,
+    "door": "south",
+    "window": "south",
+    "items": [
+      {"id": "desk", "type": "table", "x": -0.75, "z": -2.8, "label": "Çalışma masası", "target": "https://fudo.tattoo/"},
+      {"id": "printer", "type": "table", "x": 2.12, "z": -2, "label": "3D baskı & IoT"},
+      {"id": "screen", "type": "frame", "x": 2.63, "z": 2, "label": "Whiteknight portalı"},
+      {"id": "sofa", "type": "seat", "x": -0.2, "z": 2.75, "label": "Bir çay içelim"},
+      {"id": "fly", "type": "portal", "x": 0.1, "z": -0.65, "label": "SIM01 · Canlı bahçe", "target": "https://gokhanbiyik.com/lab/sim01/"}
+    ]
+  },
+  "stations": [
+    {"id": "desk", "number": "01", "name": "Çalışma masası", "tag": "TASARIM / WEB / ETKİLEŞİM", "anchor": [-0.75, 1.55, -2.05]},
+    {"id": "printer", "number": "02", "name": "3D baskı & IoT", "tag": "FİKİRDEN FİZİKSEL NESNEYE", "anchor": [2.12, 2.05, -1.25]},
+    {"id": "screen", "number": "03", "name": "Whiteknight portalı", "tag": "ESATPAŞA / ANA TERMİNAL", "anchor": [2.63, 1.95, 2.75]},
+    {"id": "sofa", "number": "05", "name": "Bir çay içelim", "tag": "TANIŞALIM / BİRLİKTE ÜRETELİM", "anchor": [-0.2, 1.05, 3.5]}
+  ],
+  "links": [
+    {"target": "https://fudo.tattoo", "object": "Çalışma masasındaki Fudō", "relation": "portal"},
+    {"target": "https://gokhanbiyik.com/lab/sim01/", "object": "Atölyedeki sinek", "relation": "portal"},
+    {"target": "https://gokhanbiyik.com/nexus/", "object": "Duvardaki atlas", "relation": "reference"}
+  ],
+  "photos": ["reference/photos/01.jpg", "reference/photos/02.jpg", "reference/photos/03.jpg"],
+  "sketch": "reference/sketch.jpg",
+  "services": {"guestGuide": false, "guestbook": false, "printer": false},
+  "nexusKit": {"version": "0.1", "path": "modeler"}
+}
