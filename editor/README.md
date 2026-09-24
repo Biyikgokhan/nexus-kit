@@ -78,6 +78,7 @@ Editörde `?` tuşu bu tabloyu gösterir.
 
 | | |
 |---|---|
+| Gezinme şeması | Üst çubuktan Blender / Cinema 4D / Uçuş. Döndürme merkezi seçili nesnedir, seçim yoksa imlecin altındaki nokta (görüntü sıçramaz); F seçime odaklar |
 | Kamera (Blender) | Orta tuş döndür · Shift+orta kaydır · Ctrl+orta ya da tekerlek yakınlaş (fare noktasına) |
 | Fly | Sağ tuş basılı: fareyle bak · W A S D ileri/yan · Q E aşağı/yukarı · Shift hızlı · tekerlek hız |
 | Kamera (C4D) | Alt+sol döndür · Alt+orta kaydır · Alt+sağ yakınlaş |
