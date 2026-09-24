@@ -83,9 +83,11 @@ export function startEditor(ctx){
   const t=controls.target,meta=ADD_TYPES.find(x=>x[0]===type)||[];const p=[t.x,type==='plane'||type==='group'?t.y:t.y+.5,t.z].map(v=>Math.round(v*1e3)/1e3);
   addEntries([[{id:newId(),type,name:meta[1]||type,p,r:[type==='plane'?-90:0,0,0],s:[1,1,1],color:type==='light'?'#ffd2a1':'#cfcac0',...(type==='light'?{intensity:3,distance:6}:{}),...(url?{url}:{})},root()]]);tc.setMode('translate');paintStatus();}
  function duplicate(){if(!sel.length)return;const pairs=[];
-  for(const o of sel){const s0=snapshotOf(o);s0.p=[s0.p[0]+.3,s0.p[1],s0.p[2]];const parentRef=refOf(root(),o.parent);
-   if(o.userData.editorAdded){const a=section().added.find(x=>x.id===o.userData.editorAdded);if(a)pairs.push([{...structuredClone(a),id:newId(),...s0,parent:parentRef},o.parent]);}
-   else{const key=o.userData.editorPath??pathOf(root(),o);if(key)pairs.push([{id:newId(),type:'clone',source:key,parent:parentRef,name:(o.name||o.type)+' kopya',...s0},o.parent]);}}
+  const taken=new Set();root().traverse(x=>{if(x.name)taken.add(x.name);});
+  const nextName=o=>{const base=(o.name||o.type).replace(/[ .]\d{2,}$/,'');let i=1;while(taken.has(`${base} ${String(i).padStart(2,'0')}`))i++;const n=`${base} ${String(i).padStart(2,'0')}`;taken.add(n);return n;}; // Blender-style: sofa → sofa 01, sofa 02 …
+  for(const o of sel){const s0=snapshotOf(o);s0.p=[s0.p[0]+.3,s0.p[1],s0.p[2]];const parentRef=refOf(root(),o.parent),name=nextName(o);
+   if(o.userData.editorAdded){const a=section().added.find(x=>x.id===o.userData.editorAdded);if(a)pairs.push([{...structuredClone(a),id:newId(),...s0,parent:parentRef,name},o.parent]);}
+   else{const key=o.userData.editorPath??pathOf(root(),o);if(key)pairs.push([{id:newId(),type:'clone',source:key,parent:parentRef,name,...s0},o.parent]);}}
   addEntries(pairs);tc.setMode('translate');paintStatus();toast('Kopyalandı · G ile taşı');}
  function removeOrHide(){if(!sel.length)return;const added=sel.filter(o=>o.userData.editorAdded),built=sel.filter(o=>!o.userData.editorAdded);
   if(built.length)change(built,()=>built.forEach(o=>{o.visible=false;}));
@@ -129,7 +131,7 @@ export function startEditor(ctx){
    <tr><th>Düzen</th><td>Shift+D kopyala · Shift+A ekle · Delete / H gizle (eklenenleri siler) · Alt+H hepsini göster · Ctrl+Z geri · Ctrl+Y ileri · Ctrl+S kaydet</td></tr></table>${b('data-help','Kapat','Kapat')}</div>`;
  document.body.append(ui);const $=s=>ui.querySelector(s);
  if(Object.keys(ctx.roots).length<2)$('.ed-realm')?.remove();if(!ctx.toggleRoof)$('[data-roof]')?.remove(); // single-root worlds (star, cave) have no realm switch or roof
- for(let node=canvas;node&&node!==document.body;node=node.parentElement)for(const el of [...node.parentElement.children])if(!(el===node||el===ui||el.tagName==='SCRIPT'||el.tagName==='STYLE'||el.tagName==='DIALOG'&&!el.open)){if(!el.hidden){el.hidden=true;el.dataset.edHidden='1';}} // the world's own UI steps aside at every level around the canvas; the canvas' ancestor chain stays
+ for(let node=canvas;node&&node!==document.body;node=node.parentElement)for(const el of [...node.parentElement.children])if(!(el===node||el===ui||el.tagName==='SCRIPT'||el.tagName==='STYLE'||el.tagName==='DIALOG'&&!el.open)){if(!el.dataset.edHidden){el.dataset.edHidden=el.style.display||'';el.style.setProperty('display','none','important');}} // the world's own UI steps aside at every level around the canvas (inline !important beats page CSS that overrides [hidden]); the canvas' ancestor chain stays
 
  function toast(t){const el=$('.ed-toast');el.textContent=t;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>{el.hidden=true;},2400);}
  function hint(t){const el=$('.ed-hint');el.textContent=t;el.hidden=!t;}
