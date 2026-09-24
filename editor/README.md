@@ -8,6 +8,7 @@ Dosyalar (kaynak: `kg_atelier/src/engine`, buradaki kopya güncel sürümdür):
 
 - `editor.js` — arayüz, gizmo, ağaç, paneller, kısayollar. `startEditor(host)`.
 - `editor-host.js` — `createEditorHost({renderer,scene,camera,canvas,roots,realm,overrides})`: orbit kontrolleri, görünüm modları, overlay. Dünyanın döngüsü `host.editing` iken `host.frame(dt)` çağırır.
+- `editor-dock.js` — Ableton tarzı pencere sistemi: sekmeli bölgeler, yüzen pencereler, boyutlandırma, katlama, kilit; yerleşim localStorage'da.
 - `editor-audio.js` — dünyanın editöre verdiği ses/müzik kontrolleri kaydı.
 - `scene-overrides.js` — yol adresleme (`name#index`), dönüşüm / görünürlük / renk / malzeme / doku / ışık / uniform / dünya ayarlarının uygulanması, ekleme, parent.
 - `editor.css` — koyu panel teması.
@@ -65,6 +66,12 @@ Canlı sitede de `https://gokhanbiyik.com/?editor=1` çalışıyor. Orada önce 
 
 Düzenlemelerin kaydetmeden önce de kaybolmaz: bu tarayıcıda taslak olarak tutulur ve sayfayı yenilesen de geri gelir.
 
+## Pencereler
+
+Arayüz Ableton gibi bölgelerden oluşur: sol, sağ ve alt bölge, her biri sekmeli. Ağaç, Özellikler, Dünya, Dokular, Ses ve Kısayollar birer sekmedir. Bir sekmeyi sürükleyip başka bölgeye bırak ya da boşluğa bırakınca yüzen pencere olur (⧉ da çıkarır). ▾ bölgeyi şeride katlar, × sekmeyi gizler, kenarlardan boyutlandırılır. Üst çubuktaki **Pencereler** menüsünden sekmeleri aç/kapat, yerleşimi kilitle ya da sıfırla. Yerleşim tarayıcıda saklanır ve atölye, Esatpaşa, yıldız, yeraltı — bütün dünyalarda aynıdır.
+
+**Dokular** sekmesi `public/textures` altındaki her görseli küçük resimle listeler; bir mesh seçip kanalı (renk, normal, pürüz, metal, ışıma, AO, alfa, bump) belirleyip küçük resme tıklayınca doku takılır. Yükle ile bilgisayarından görsel eklenir (dev sunucuda `public/textures/editor/`). Canlı sitede liste `public/textures/index.json` dosyasından gelir; derlemede otomatik yazılır.
+
 ## Kısayollar
 
 Editörde `?` tuşu bu tabloyu gösterir.
@@ -96,7 +103,7 @@ Editörde `?` tuşu bu tabloyu gösterir.
 - **Görünürlük:** gizle ya da göster. Silmek yerine gizlemek, kodun kurduğu nesneleri güvenle kaldırır.
 - **Renk:** değiştirildiğinde nesneye kendi malzemesi verilir. Aynı malzemeyi paylaşan diğer duvarlar ve kutular etkilenmez.
 - **Ekle:** küp, silindir, küre, düzlem, nokta ışık ya da `public/models/` altındaki bir `.glb` model. Eklenen nesne Delete ile gerçekten silinir.
-- **Kopyala:** var olan bir nesnenin kopyası (Shift+D).
+- **Kopyala:** seçili nesnelerin ve grupların kopyası (Shift+D). Adlar Blender gibi numaralanır: `sofa` → `sofa 01`, `sofa 02` …
 - **Parent ve grup:** birden fazla nesneyi seçip taşıyınca ortak merkezden birlikte gider. Kalıcı olarak birlikte hareket etsinler diye grupla ya da birini diğerine bağla. Bu bağlar da dosyaya kaydedilir.
 - **İpuçları:** her düğmenin ve alanın üstünde yarım saniye bekleyince ne yaptığı ve kısayolu çıkar.
 - **Işık:** şiddet, renk, menzil, sönüm, spot açısı, gölge.
