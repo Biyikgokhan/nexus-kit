@@ -8,6 +8,7 @@
     "nexus-kit": "bin/nexus-kit.mjs"
   },
   "files": [
+    "editor/",
     "ASSETS.md",
     "CONTRIBUTING.md",
     "LICENSE",
