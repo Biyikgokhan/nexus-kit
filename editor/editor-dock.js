@@ -24,7 +24,7 @@ export function createDock(host,{panels,defaults={},storageKey='kg-editor-layout
  function zoneOf(id){return ZONES.find(z=>state.zones[z].panels.includes(id))||null;}
  function detach(id){for(const z of ZONES){const zs=state.zones[z];const i=zs.panels.indexOf(id);if(i>=0){zs.panels.splice(i,1);if(zs.active===id)zs.active=zs.panels[Math.min(i,zs.panels.length-1)]||null;}}delete state.floats[id];state.hidden=state.hidden.filter(x=>x!==id);}
  function dockTo(id,z,index){detach(id);const zs=state.zones[z];zs.panels.splice(index??zs.panels.length,0,id);zs.active=id;zs.collapsed=false;render();save();}
- function floatAt(id,x,y,w,h){detach(id);const prev=state.floats[id];state.floats[id]={x:Math.max(0,x),y:Math.max(0,y),w:w||prev?.w||320,h:h||prev?.h||300,collapsed:false};render();save();}
+ function floatAt(id,x,y,w,h){detach(id);const prev=state.floats[id];const hr=root.getBoundingClientRect();w=Math.max(300,w||prev?.w||360);h=Math.max(220,h||prev?.h||320);state.floats[id]={x:Math.max(0,Math.min(x,hr.width-w)),y:Math.max(0,Math.min(y,hr.height-h)),w,h,collapsed:false};render();save();} // floats never leave the dock and never shrink below a usable size
  function render(){
   root.classList.toggle('lock',Boolean(state.lock));
   for(const z of ZONES){const zs=state.zones[z],el=zoneEl[z];const empty=!zs.panels.length;el.classList.toggle('empty',empty);el.classList.toggle('collapsed',zs.collapsed&&!empty);
@@ -43,7 +43,7 @@ export function createDock(host,{panels,defaults={},storageKey='kg-editor-layout
  root.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;const zone=t.closest('.ed-zone')?.dataset.zone,fl=t.closest('.ed-float')?.dataset.float;
   if(t.dataset.tab!==undefined){const zs=state.zones[zone];if(zs.active===t.dataset.tab&&!zs.collapsed)zs.collapsed=false;zs.active=t.dataset.tab;zs.collapsed=false;render();save();}
   else if(t.dataset.zcollapse!==undefined){state.zones[zone].collapsed=!state.zones[zone].collapsed;render();save();}
-  else if(t.dataset.zfloat!==undefined){const id=state.zones[zone].active;if(id){const r=zoneEl[zone].getBoundingClientRect(),hr=root.getBoundingClientRect();floatAt(id,r.left-hr.left+30,r.top-hr.top+30,Math.min(420,r.width+60),Math.min(360,r.height-60));}}
+  else if(t.dataset.zfloat!==undefined){const id=state.zones[zone].active;if(id){const r=zoneEl[zone].getBoundingClientRect(),hr=root.getBoundingClientRect();floatAt(id,r.left-hr.left+30,Math.max(20,r.top-hr.top-200),420,340);}}
   else if(t.dataset.zhide!==undefined){const id=state.zones[zone].active;if(id)hide(id);}
   else if(t.dataset.fcollapse!==undefined){state.floats[fl].collapsed=!state.floats[fl].collapsed;render();save();}
   else if(t.dataset.fdock!==undefined)dockTo(fl,'right');
