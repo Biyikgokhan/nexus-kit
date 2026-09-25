@@ -66,6 +66,10 @@ Canlı sitede de `https://gokhanbiyik.com/?editor=1` çalışıyor. Orada önce 
 
 Düzenlemelerin kaydetmeden önce de kaybolmaz: bu tarayıcıda taslak olarak tutulur ve sayfayı yenilesen de geri gelir.
 
+## Üst çubuk
+
+Üst çubuk sade tutuldu: Atölye / Esatpaşa · Taşı / Döndür / Ölçekle · Dünya/Yerel · Snap · **+ Ekle** · **Düzen ▾** (kopyala, grupla, bağla, ayır, gizle, ızgara, çatı) · **Görünüm ▾** (gölgeleme modu, ışık, serbest gezinme, ses paneli, tam ekran, pencereler, seçim etrafında dönme) · Gezinme şeması · ? · Kaydet · Oyuna dön. Konsoldan da erişilir: `kgEditor.select([...])`, `kgEditor.frame()`, `kgEditor.debug`.
+
 ## Pencereler
 
 Arayüz Ableton gibi bölgelerden oluşur: sol, sağ ve alt bölge, her biri sekmeli. Ağaç, Özellikler, Dünya, Dokular, Ses ve Kısayollar birer sekmedir. Bir sekmeyi sürükleyip başka bölgeye bırak ya da boşluğa bırakınca yüzen pencere olur (⧉ da çıkarır). ▾ bölgeyi şeride katlar, × sekmeyi gizler, kenarlardan boyutlandırılır. Üst çubuktaki **Pencereler** menüsünden sekmeleri aç/kapat, yerleşimi kilitle ya da sıfırla. Yerleşim tarayıcıda saklanır ve atölye, Esatpaşa, yıldız, yeraltı — bütün dünyalarda aynıdır.

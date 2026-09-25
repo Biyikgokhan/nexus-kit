@@ -178,7 +178,7 @@ export function startEditor(ctx){
  texEl.querySelector('[data-texup]').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;fetch('/__editor/upload?name='+encodeURIComponent(f.name),{method:'POST',body:f}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(j=>loadTextureList(true).then(()=>{toast('Yüklendi: '+j.url);paintTextures();})).catch(()=>toast('Canlı sitede yükleme yok: dosyayı public/textures altına koy'));e.target.value='';});
  function paintWorld(){if(!dock.visible('world'))return;worldEl.innerHTML=worldRows();bindWorld(worldEl);}
  const dock=createDock(ui,{panels:[{id:'tree',title:'Ağaç',el:$('.ed-tree')},{id:'props',title:'Özellikler',el:$('.ed-props')},{id:'world',title:'Dünya',el:worldEl},{id:'textures',title:'Dokular',el:texEl},{id:'audio',title:'Ses',el:$('.ed-audio')},{id:'help',title:'Kısayollar',el:$('.ed-help')}],
-  defaults:{left:['tree'],right:['props','world'],bottom:['textures','audio','help'],sizes:{left:260,right:320,bottom:230},collapsed:{bottom:true}},
+  defaults:{left:['tree'],right:['props'],bottom:['world','textures','audio','help'],sizes:{left:250,right:320,bottom:240},collapsed:{bottom:true}},
   onChange(){paintWorld();paintTextures();paintAudio();}});
  $('.ed-help').hidden=false;$('.ed-audio').hidden=false;
  ui.querySelector('.ed-actions').insertAdjacentHTML('beforeend',b('data-windows','Pencereler','Panelleri aç/kapat, yerleşimi kilitle ya da sıfırla. Sekmeleri sürükleyerek sol/sağ/alt bölgelere ya da pencereye taşı; kenarlardan boyutlandır.'));
@@ -188,6 +188,18 @@ export function startEditor(ctx){
  winMenu.addEventListener('change',e=>{const t=e.target;if(t.dataset.win){t.checked?dock.show(t.dataset.win):dock.hide(t.dataset.win);}else if(t.dataset.winlock!==undefined)dock.setLock(t.checked);});
  winMenu.addEventListener('click',e=>{if(e.target.closest('[data-winreset]')){dock.reset();paintWinMenu();}});
  document.addEventListener('pointerdown',e=>{if(!winMenu.hidden&&!winMenu.contains(e.target)&&!e.target.closest('[data-windows]'))winMenu.hidden=true;},{capture:true});
+ /* Toolbar diet: bar = realm · gizmo modes · Ekle · Düzen ▾ · Görünüm ▾ · Gezinme · Kaydet · ? · Oyuna dön. Everything else lives in the two menus. */
+ (function foldToolbar(){const actions=ui.querySelector('.ed-actions');if(!actions)return;
+  const menu=(id,label,tip)=>{const wrap=document.createElement('span');wrap.className='ed-menu';wrap.innerHTML=`<button type="button" data-menu="${id}" data-tip="${tip}">${label}</button><div class="ed-menu-list" hidden></div>`;return wrap;};
+  const duzen=menu('duzen','Düzen','Kopyala, grupla, bağla, ayır, gizle, ızgara, çatı.'),gorunum=menu('gorunum','Görünüm','Gölgeleme modu, ışık, serbest gezinme, ses paneli, tam ekran, pencereler.');
+  const move=(sel,into)=>{for(const el of [...ui.querySelectorAll(sel)]){const host=el.closest('label.ed-view')||el;if(host.closest('.ed-menu-list'))continue;into.querySelector('.ed-menu-list').append(host);}};
+  actions.prepend(duzen);duzen.after(gorunum);
+  move('[data-dup],[data-group],[data-parent],[data-unparent],[data-hide],[data-grid],[data-roof]',duzen);
+  move('[data-view],[data-light],[data-free],[data-audio],[data-fs],[data-windows]',gorunum);
+  const add=ui.querySelector('[data-add]');if(add)actions.prepend(add);
+  const nav=ui.querySelector('[data-nav]')?.closest('label.ed-view'),navsel=ui.querySelector('[data-navsel]')?.closest('label.ed-view');if(navsel)gorunum.querySelector('.ed-menu-list').append(navsel);if(nav)gorunum.after(nav);
+  ui.addEventListener('click',e=>{const b=e.target.closest('[data-menu]');const open=[...ui.querySelectorAll('.ed-menu-list')];if(b){const list=b.nextElementSibling;const show=list.hidden;open.forEach(l=>l.hidden=true);list.hidden=!show;e.stopPropagation();return;}if(!e.target.closest('.ed-menu-list')||e.target.closest('button'))setTimeout(()=>open.forEach(l=>l.hidden=true),0);});
+  document.addEventListener('pointerdown',e=>{if(!e.target.closest('.ed-menu'))ui.querySelectorAll('.ed-menu-list').forEach(l=>l.hidden=true);},{capture:true});})();
  ui.addEventListener('pointerover',e=>{const el=e.target.closest('[data-tip]');clearTimeout(tipTimer);tip.hidden=true;if(!el)return;tipTimer=setTimeout(()=>{tip.innerHTML=esc(el.dataset.tip)+(el.dataset.key?`<kbd>${esc(el.dataset.key)}</kbd>`:'');tip.hidden=false;const r=el.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;let x=Math.min(innerWidth-w-8,Math.max(8,r.left+r.width/2-w/2)),y=r.bottom+8;if(y+h>innerHeight-8)y=r.top-h-8;tip.style.left=x+'px';tip.style.top=y+'px';},450);});
  ui.addEventListener('pointerout',e=>{if(!e.relatedTarget||!e.target.closest('[data-tip]')?.contains(e.relatedTarget)){clearTimeout(tipTimer);tip.hidden=true;}});
  const num=v=>Number.isFinite(v)?String(Math.round(v*1000)/1000):'0';
@@ -377,5 +389,7 @@ export function startEditor(ctx){
  /* start: bird's eye over the courtyard */
  const t=controls.target;if(t.lengthSq()<1e-6)t.set(-1,1,0);camera.position.set(t.x+6,t.y+6,t.z+7);controls.update();
  select([]);paintTree();paintStatus();toast('Editör açık · düğmelerin üstünde bekle: açıklama · ? kısayollar');
- return {get data(){return data;},get selection(){return sel;},select,parentTo,group,save,dispose(){removeEventListener('keydown',onKey,{capture:true});removeEventListener('keyup',onKeyUp,{capture:true});tc.dispose();gizmo.removeFromParent();grid.removeFromParent();pivot.removeFromParent();helpers.forEach(h=>h.removeFromParent());ui.remove();}};
+ const api={get data(){return data;},get selection(){return sel;},select,parentTo,group,save,frame,debug:{tc,gizmo,grid,pivot,controls,camera,ctx,get helpers(){return helpers;}},dispose(){removeEventListener('keydown',onKey,{capture:true});removeEventListener('keyup',onKeyUp,{capture:true});tc.dispose();gizmo.removeFromParent();grid.removeFromParent();pivot.removeFromParent();helpers.forEach(h=>h.removeFromParent());ui.remove();}};
+ globalThis.kgEditor=api; /* console access: kgEditor.select([...]), kgEditor.debug.tc … */
+ return api;
 }

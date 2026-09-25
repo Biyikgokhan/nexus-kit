@@ -2,7 +2,7 @@
 body.editor-on .experience>:not(#world){display:none!important}
 body.editor-on #world{cursor:default}
 #kg-editor{--ed-bg:#1f2126ee;--ed-panel:#26292fef;--ed-line:#3a3e46;--ed-ink:#dfe2e7;--ed-mute:#8d939e;--ed-accent:#ff9d3a;position:fixed;inset:0;pointer-events:none;z-index:60;font:12px/1.45 'DM Sans',system-ui,sans-serif;color:var(--ed-ink)}
-#kg-editor>*{pointer-events:auto}
+#kg-editor>*{pointer-events:auto}#kg-editor>.ed-dock,#kg-editor .ed-floats,#kg-editor .ed-drop{pointer-events:none} /* the dock is a transparent grid over the 3D view: only its zones, floats and splitters take the mouse */
 #kg-editor button{font:inherit;color:var(--ed-ink);background:#343840;border:1px solid var(--ed-line);border-radius:4px;padding:5px 9px;cursor:pointer;min-height:28px}
 #kg-editor button:hover{border-color:var(--ed-accent)}#kg-editor button[aria-pressed=true]{background:#5a3d1c;border-color:var(--ed-accent);color:#fff}
 #kg-editor .ed-primary{background:var(--ed-accent);color:#1b1b1b;border-color:var(--ed-accent);font-weight:700}
@@ -77,3 +77,9 @@ body.editor-on #world{cursor:default}
 .ed-textures .ed-meta{padding:4px 8px;margin:0;flex:none}
 .ed-winmenu{position:absolute;top:48px;right:8px;z-index:12;background:var(--ed-panel);border:1px solid var(--ed-line);border-radius:6px;padding:8px 10px;display:grid;gap:5px;font-size:12px;min-width:180px}.ed-winmenu label{display:flex;gap:6px;align-items:center;cursor:pointer}.ed-winmenu hr{border:0;border-top:1px solid var(--ed-line);margin:2px 0}.ed-winmenu button{background:#23262c;color:#f3efe8;border:1px solid #3a3d45;border-radius:4px;padding:3px 8px;font:inherit;cursor:pointer}
 .ed-abtn input[type=file]{display:none}
+
+/* ── simpler toolbar: dropdown groups ── */
+.ed-menu{position:relative;display:inline-flex}.ed-menu>button::after{content:' ▾';color:var(--ed-mute)}.ed-menu-list{position:absolute;top:100%;left:0;z-index:14;display:grid;gap:2px;min-width:200px;padding:6px;background:var(--ed-panel);border:1px solid var(--ed-line);border-radius:6px;box-shadow:0 12px 34px rgba(0,0,0,.5)}
+.ed-menu-list[hidden]{display:none}.ed-menu-list button,.ed-menu-list label{justify-content:flex-start;text-align:left;width:100%;display:flex;gap:8px;align-items:center;margin:0}.ed-menu-list label.ed-view{padding:3px 6px;font-size:12px}.ed-menu-list hr{border:0;border-top:1px solid var(--ed-line);margin:3px 0}
+.ed-top{flex-wrap:nowrap;overflow-x:auto;overflow-y:visible;scrollbar-width:none}.ed-top::-webkit-scrollbar{display:none}
+@media (max-width:1100px){.ed-top b{display:none}}

@@ -3,9 +3,9 @@
    a float; zones and floats resize; anything collapses to a strip; a lock freezes the arrangement. The layout is
    one JSON in localStorage, shared by every world, so the atelier, the star and the cave open with the same desk. */
 const ZONES=['left','right','bottom'];const MIN={left:180,right:220,bottom:120};
-export function createDock(host,{panels,defaults={},storageKey='kg-editor-layout',onChange=()=>{}}){
+export function createDock(host,{panels,defaults={},storageKey='kg-editor-layout-v2',onChange=()=>{}}){
  const byId=new Map(panels.map(p=>[p.id,p]));
- const fresh=()=>({v:1,lock:false,hidden:[],floats:{},zones:Object.fromEntries(ZONES.map(z=>[z,{size:defaults.sizes?.[z]||(z==='bottom'?220:280),collapsed:Boolean(defaults.collapsed?.[z]),active:(defaults[z]||[])[0]||null,panels:[...(defaults[z]||[])]}]))});
+ const fresh=()=>({v:1,lock:false,hidden:[],floats:{},zones:Object.fromEntries(ZONES.map(z=>[z,{size:defaults.sizes?.[z]||(z==='bottom'?220:280),collapsed:Boolean(defaults.collapsed?.[z])||(z!=='bottom'&&typeof innerWidth==='number'&&innerWidth<1000),active:(defaults[z]||[])[0]||null,panels:[...(defaults[z]||[])]}]))});
  let state=null;try{const s=JSON.parse(localStorage.getItem(storageKey)||'null');if(s&&s.v===1)state=s;}catch{}
  if(!state)state=fresh();
  // every known panel lives somewhere; ids from older layouts that no longer exist are dropped
