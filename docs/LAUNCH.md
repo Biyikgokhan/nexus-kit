@@ -2,6 +2,8 @@
 
 Use after the kit is publicly readable; the maintenance registry stays private. Identify yourself as the maintainer. Do not present design goals as shipped features. The original SVG in docs/img/nexus-flow.svg is Apache-2.0; credit the project. No media generation credits were spent.
 
+Live wizard: [English](https://gokhanbiyik.com/nexus-kit/?lang=en) · [Türkçe](https://gokhanbiyik.com/nexus-kit/). These are prepared announcement drafts, not a record of posts already published.
+
 ## Reddit / r/threejs or your profile
 
 Title: Open-source toolkit for small stylized 3D studios that link to each other
@@ -10,11 +12,14 @@ I'm the maintainer of Nexus Interlink, inspired by the spaces at fudo.tattoo and
 
 The idea is simple: each artist or studio hosts its own stylized place and publishes a small HTTPS JSON manifest. Ordinary links connect the places. No central account, mandatory AI provider or proprietary renderer is required.
 
+Each participant supplies their own domain and hosting. Connection requests are public GitHub issues reviewed by a maintainer; this adds no hosted backend or per-visitor proxy for the project.
+
 Nexus Kit 0.3 has a TR/EN browser wizard, an orbitable Three.js room, editable source ZIP export, GLB loading, and optional Claude/Codex skills plus local read-only MCP tools. Photos stay local in the wizard. Blender and other GLB exporters fit the same workflow.
 
 This is an early diorama starter, not photogrammetry or the complete production-site engine. The exported project needs a Node build. I'd especially value feedback on mobile performance, accessible navigation and what studios need for a reusable asset library.
 
 Source: https://github.com/Biyikgokhan/nexus-kit
+Try the wizard: https://gokhanbiyik.com/nexus-kit/?lang=en
 Connection requests: https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml
 GPL tooling; Apache templates. Your original artwork remains yours.
 
@@ -29,12 +34,18 @@ The renderer uses on-demand rendering and a capped pixel ratio. It reports actua
 I'd welcome concrete feedback about accessibility and what you would need to adopt this in a small studio. Current limitations and the roadmap are documented in the README.
 
 Source and setup: https://github.com/Biyikgokhan/nexus-kit
+Live wizard: https://gokhanbiyik.com/nexus-kit/?lang=en
 
 ## Türkçe kısa duyuru
 
 Nexus Interlink’i kreatiflerin ve stüdyoların kendi 3B mekânlarını kurup birbirlerine referans verebildiği açık bir zemine dönüştürüyoruz. Nexus Kit; Türkçe/İngilizce sihirbaz, Three.js kaynak proje ZIP’i, Blender/GLB yolu ve isteğe bağlı Claude/Codex becerileri sunuyor. Mekân kendi alan adında, özgün eserler sende. AI zorunlu değil.
 
 İlk sürüm küçük bir diorama başlangıcı; otomatik bina modelleme veya ölçülmüş dijital ikiz iddiası yok. Katkı alanları: mobil performans, erişilebilirlik, açık lisanslı varlıklar ve birlikte çalışan farklı motorlar.
+
+Domain ve hosting katılımcıya ait. Bağlantı başvuruları public GitHub formundan alınır ve bakımcı tarafından incelenir; bu akış projeye yeni bir sunucu veya ziyaretçi başına servis yükü getirmez.
+
+Sihirbaz: https://gokhanbiyik.com/nexus-kit/
+Bağlantı başvurusu: https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml
 
 https://github.com/Biyikgokhan/nexus-kit
 
