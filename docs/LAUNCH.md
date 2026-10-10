@@ -6,9 +6,11 @@ Live wizard: [English](https://gokhanbiyik.com/nexus-kit/?lang=en) · [Türkçe]
 
 ## Reddit publication status / Reddit yayın durumu
 
-Prepared on 2026-10-10. No Reddit posts have been submitted. These communities are candidates, not confirmed posting permissions. The browser currently requires Reddit human verification and account sign-in; the web reader did not expose the communities' current rule text. Check the rules and required flair in the signed-in interface before submitting. If a community restricts promotion, use its designated thread or leave it out. Record actual permalinks below only after verifying submission.
+Prepared on 2026-10-10. No Reddit posts have been submitted. The browser currently requires Reddit human verification and account sign-in; Chrome automation is also blocked by an open extension panel. Research findings below distinguish candidates from excluded communities. Confirm current rules, flair and account eligibility before submitting. Record actual permalinks only after verifying submission.
 
 2026-10-10 tarihinde hazırlandı. Henüz Reddit gönderisi yayınlanmadı. Aşağıdaki topluluklar adaydır; paylaşım izinleri doğrulanmış değildir. Tarayıcıda insan doğrulaması ve hesap girişi gerekiyor. Güncel kurallar ve gerekli etiket paylaşım öncesi kontrol edilecek; tanıtımı kısıtlayan toplulukta uygun sabit başlık kullanılacak veya paylaşım yapılmayacak.
+
+Voice / Üslup: invite people to explore and improve the project together. Use "I'd love to tinker together" naturally, alongside a concrete area for feedback. Express trust in younger makers without assigning them an obligation or promising resources. / İnsanları birlikte denemeye ve geliştirmeye davet et; "birlikte kurcalayıp geliştirmek isterim" ifadesini somut bir katkı alanıyla kullan. Genç üreticilere güveni anlatırken onlara görev yükleme veya sağlanmayan kaynaklar vaat etme.
 
 ## Reddit / r/threejs — English technical introduction
 
@@ -38,7 +40,7 @@ This is an early diorama starter. The export needs a Node build before deploymen
 
 Tooling is GPL-3.0-or-later; exported templates and the protocol are Apache-2.0. Your original artwork remains yours.
 
-I'd appreciate feedback on the GLB workflow and accessible navigation in particular. If you were adapting this for a small studio, which part would you want to replace first?
+I'd appreciate feedback on the GLB workflow and accessible navigation in particular. If this sounds interesting, I'd love to tinker together. What would make this a useful starting point for your own studio?
 
 ## Reddit / r/SideProject — English project introduction
 
@@ -58,7 +60,7 @@ I also want discovery to happen through the places themselves: an artist can int
 
 You can [try the wizard here](https://gokhanbiyik.com/nexus-kit/?lang=en). [The source, licenses and setup instructions are on GitHub](https://github.com/Biyikgokhan/nexus-kit).
 
-It's still an early starter. Exported projects need to be built with Node/npm, so deployment is the main technical step today. I'd like to hear from people who make portfolios or run small creative spaces: would a linked 3D place be useful to you, and where would this setup get in your way?
+It's still an early starter. Exported projects need to be built with Node/npm, so deployment is the main technical step today. I'm hopeful younger makers will take this further than I can imagine. If it sparks your curiosity, I'd love to tinker together — especially on making setup easier for artists and small studios.
 
 ## Reddit / r/CodingTR — Türkçe proje ve mimari paylaşımı
 
@@ -87,7 +89,7 @@ Açık kaynak olarak yayınladığım Nexus Kit'te bugün şunlar var:
 
 Araçlar GPL-3.0-or-later, başlangıç şablonları ve protokol Apache-2.0 lisanslı. Özgün eserlerin hakları üreticisinde kalıyor.
 
-Özellikle mobil kullanım, GLB aktarımı ve kurulumun anlaşılabilirliği konusunda yorumlarınızı duymak isterim. Kendi portfolyonuz ya da stüdyonuz için uyarlayacak olsanız ilk eksik bulacağınız şey ne olurdu?
+Genç üreticilerin bu fikri benim hayal ettiğimden daha ileriye taşıyabileceğine inanıyorum. Merak edenlerle birlikte kurcalayıp geliştirmek isterim. Özellikle mobil kullanım, GLB aktarımı ve kurulumun anlaşılabilirliği konusunda yorumlarınızı duymak güzel olur.
 
 ## Three.js forum / Showcase
 
@@ -103,7 +105,7 @@ Discovery can happen on participants' own sites: visible HTML links introduce Ne
 
 The renderer uses on-demand rendering and a capped pixel ratio. It reports actual renderer triangle/draw-call counters; no universal FPS promise is made. A manifest is engine-independent, so creators can replace this starter or bring models from Blender and other tools.
 
-I'd welcome concrete feedback about accessibility and what you would need to adopt this in a small studio. Current limitations and the roadmap are documented in the README.
+If you're curious about small, independently hosted 3D spaces, I'd love to tinker together. Feedback on accessibility and what a studio would need to adopt this would be especially useful. Current limitations and the roadmap are documented in the README.
 
 Source and setup: https://github.com/Biyikgokhan/nexus-kit
 Live wizard: https://gokhanbiyik.com/nexus-kit/?lang=en
@@ -122,6 +124,8 @@ Katılımcılar kendi sitelerinde Nexus'u tanıtıp seçtikleri komşu mekânlar
 
 Domain ve hosting katılımcıya ait. Bağlantı başvuruları public GitHub formundan alınır ve bakımcı tarafından incelenir; bu akış projeye yeni bir sunucu veya ziyaretçi başına servis yükü getirmez.
 
+Genç üreticilerin bu fikri çok daha ileriye taşıyabileceğine inanıyorum. Merak edenlerle birlikte kurcalayıp geliştirmek isterim.
+
 Sihirbaz: https://gokhanbiyik.com/nexus-kit/
 Bağlantı başvurusu: https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml
 
@@ -137,6 +141,37 @@ https://github.com/Biyikgokhan/nexus-kit
 
 Policies checked: [Stack Overflow promotion](https://stackoverflow.com/help/promotion), [Reddit spam](https://support.reddithelp.com/hc/en-us/articles/360043504051-Spam), [Three.js forum guidelines](https://discourse.threejs.org/guidelines).
 
+### Community research, 2026-10-10 / Topluluk araştırması
+
+| Community | Relevant angle | Current decision |
+| --- | --- | --- |
+| [r/threejs](https://www.reddit.com/r/threejs/) | Three.js starter, GLB and accessible navigation | Candidate; live rules and account eligibility still need checking. |
+| [r/SideProject](https://www.reddit.com/r/SideProject/) | Why it exists, working demo and simpler onboarding | Candidate; live rules and account eligibility still need checking. |
+| [r/CodingTR](https://www.reddit.com/r/CodingTR/) | Turkish introduction, open protocol, AI-assisted design | Candidate; project-sharing rules and account eligibility still need checking. |
+| [r/selfhosted](https://www.reddit.com/r/selfhosted/) | Static output on the participant's own HTTPS host | New projects belong in the current New Project Megathread. Prepare a top-level comment using its requested fields, not a separate launch post. |
+| [r/webdev](https://www.reddit.com/r/webdev/) | Browser wizard, export/build flow and engineering limitations | Excluded from this AI-authored campaign: rule 8 prohibits LLM-generated posts/comments, including on Showoff Saturday. |
+| [Three.js Showcase](https://discourse.threejs.org/) | Technical walkthrough and visible demo | Relevant forum; account sign-in required. |
+| [r/opensource](https://www.reddit.com/r/opensource/) | Open-source licensing and participation | Excluded from this AI-authored campaign: rule 3 bans AI-generated content. Do not disguise or paraphrase around that restriction. |
+| [r/creativecoding](https://www.reddit.com/r/creativecoding/) | Creative process and interactive spaces | Left out of this launch: its no-AI-art rule makes this AI-assisted creative showcase a poor fit without clarification from moderators. |
+
+These are research decisions, not a claim that any post has been published or accepted. / Bunlar araştırma kararlarıdır; yayınlanmış veya kabul edilmiş gönderi anlamına gelmez.
+
+### r/selfhosted — New Project Megathread comment
+
+Research reference: [Week of 08 Oct 2026](https://www.reddit.com/r/selfhosted/comments/1x145j7/new_project_megathread_week_of_08_oct_2026/). If posting later, find the current pinned thread rather than reviving an old one.
+
+**Project Name:** Nexus Kit / Nexus Interlink
+
+**Repo / website:** [Source and setup](https://github.com/Biyikgokhan/nexus-kit) · [Browser wizard](https://gokhanbiyik.com/nexus-kit/?lang=en)
+
+**Description:** An early starter for artists and small studios to host a stylized 3D place on their own domain. It exports editable Three.js/Vite source, supports GLB models and uses an HTTPS JSON manifest plus ordinary links to connect independent places. Owners can introduce the project and recommend neighbouring studios on their own sites; return links are optional. The maintained atlas uses manual review, but direct links work without its approval.
+
+**Deployment:** Node.js 22.12+ and npm for setup/build. Run the wizard locally or use the public wizard, extract the source ZIP, run `npm install` and `npm run build`, then serve `dist/` on an HTTPS host with `/.well-known/nexus.json` at the domain root. Runtime output is static; this starter has no database or hosted AI backend. Hosting is supplied by each participant. [TR/EN self-host guide](https://github.com/Biyikgokhan/nexus-kit/blob/main/docs/SELF-HOST.md).
+
+**AI Involvement:** Yes. I'm Gökhan, a self-taught designer with 20+ years of professional experience, mainly motion design and art direction. I guide this AI-assisted project through design decisions, references and iterative prompts. AI use is optional for people using the kit. Tooling is GPL-3.0-or-later; templates and protocol are Apache-2.0.
+
+It's an early diorama starter, and deployment still needs technical familiarity. If this sounds interesting, I'd love to tinker together, especially on making self-hosting easier for creative people.
+
 
 ## Türkçe teknik paylaşım
 
@@ -148,7 +183,7 @@ Amaç yaratıcı üretime erişimi genişletmek. Bunun için kurulum, düşük d
 
 Keşif için katılımcıların kendi sayfalarından seçtikleri komşu mekânlara doğrudan bağlantı vermesini öneriyoruz. Nexus tanıtımı ve komşu bağlantısı için Three.js yanında kullanılabilen basit HTML örneği rehberde; karşı bağlantı şartı veya takip betiği yok.
 
-Görüntüleyici yalnız etkileşim sırasında yeniden çizer ve piksel oranını sınırlar. Gerçek üçgen/çizim çağrısı sayaçlarını gösterir; her cihaz için FPS sözü vermez. Erişilebilirlik, mobil performans ve stüdyoların ihtiyaç duyduğu varlıklar konusunda somut geri bildirim arıyoruz.
+Görüntüleyici yalnız etkileşim sırasında yeniden çizer ve piksel oranını sınırlar. Gerçek üçgen/çizim çağrısı sayaçlarını gösterir; her cihaz için FPS sözü vermez. Erişilebilirlik, mobil performans ve stüdyoların ihtiyaç duyduğu varlıklar üzerine birlikte kurcalayıp geliştirmek isterim.
 
 Kaynak: https://github.com/Biyikgokhan/nexus-kit
 
