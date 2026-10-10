@@ -8,6 +8,8 @@
 
 ## Start here
 
+**Try the live wizard:** [English](https://gokhanbiyik.com/nexus-kit/?lang=en) · [Türkçe](https://gokhanbiyik.com/nexus-kit/). Create your source ZIP in the browser, then build it on your computer. To run the wizard locally, use the commands below.
+
 Requires **Node.js 22.12+** and npm. Blender is optional. This repository is the distribution source; no npm registry package or approved app-store listing is claimed.
 
 ```sh
