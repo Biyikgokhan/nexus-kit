@@ -1,51 +1,27 @@
-# Yol haritası
+# Roadmap
 
-Sıra, KG Atelier'in gerçek sürüm mantığıyla: önce yürünebilir iskelet, sonra detay. Her madde "bitti" sayılmak için README'ye dürüst bir satır ister.
+## 0.3.0 baseline
 
-## 0.1 — Belgeler ve harness (bu klasör)
+TR/EN wizard, standalone source ZIP, automatic build-time manifests, GLB loading, offline grid planning, Claude/Codex skill packaging, local MCP tools, registry DNS pinning, tests and CI.
 
-- [x] Tasarım özeti, gereksinimler, iki sihirbaz akışı, art direction, harness, protokol, topluluk.
-- [x] `harness/AGENTS.md`, dört skill, sağlayıcı adaptörleri, `.env.example`.
-- [x] `schema/nexus-interlink-0.2.schema.json`, `templates/place.example.json`, kroki şablonu.
-- [ ] Ekol sahibi gözden geçirir; sayılar ve yasaklar onaylanır.
+Validation: kit and registry tests, wizard and generated-project builds, plugin/skill validators. Blender rendering and a broad real-device performance matrix have not been tested here.
 
-## 0.2 — Kolay yol (tarayıcı sihirbazı)
+## Creation
 
-- [x] Atlasın mevcut kurucusu genişletildi (`nexus.html#kur`, `src/nexus/wizard.js`, `zip-browser.js`): 04 İndir · 05 Yayınla · 06 Haritaya çık; tarayıcı ZIP motor paketini yayının kendi Vite manifestinden toplar.
-- [x] Izgara, palet, etiket, kapı, 3B önizleme (mevcut kurucu). [ ] Kroki 4-nokta düzeltme.
-- [x] Yayın sekmeleri (Vercel/Netlify/Cloudflare/GitHub Pages/cPanel), `.well-known` tarayıcı kontrolü.
-- [x] Yardımcı paneli: Claude API (sessionStorage), Ollama (adres localStorage); describe · sketch-to-plan · review; JSON görev zarfı (`harness/client.mjs`, Fudō `src/nexus/helper.js`).
-- [x] 320/390/1440 px QA, reduced-motion, sihirbazın kendi konsol hatası sıfır; uçtan uca ZIP → kit `check` sarı (`reference/wizard-qa.json`, 20 Eylül 2026).
+- Direct drag placement and visible multi-link editing.
+- Asset budgets and real mobile-device measurements.
+- Optional first-person controls and interactive object portals.
+- A reusable asset library with source, creator attribution and redistribution licenses.
+- Blender metadata round trips and editor accessibility.
 
-## 0.3 — Kayıt deposu ve atlas bağı
+## Interlink
 
-- [x] `nexus-registry` repo: issue şablonu, SSRF korumalı doğrulama (`scripts/verify.mjs`), otomatik PR iş akışı, POLICY.
-- [ ] Atlas build'i `registry.json` + canlı manifest çekimi; haftalık yayın.
-- [ ] Şema 0.3 (göreli foto, yeni türler + fallback, engine serbest, updatedAt).
+- Cross-renderer protocol compatibility tests.
+- Registry updates and opt-out workflow with explicit coordinate consent.
+- Atlas ingestion and documented health checks; no automatic enrollment or expiry service yet.
+- Discovery feeds without a mandatory central registry.
 
-## 0.4 — Modelci yolu (CLI)
+## Stewardship
 
-- [x] `nexus-kit`: doctor · init · manifest · check · blender · harness · publish · sketch (--show / --grid / --ai; navigasyon taslağı) (bağımlılıksız, testli). [ ] dev · package.
-- [ ] `walk` şablonu: KG Atelier `src/engine/*` vendored + `place-*.js` iskeleti + testler.
-- [x] `templates/project/build_place.py`: place.json → kabuk + nesneler → zone/malzeme batch → GLB + rapor; Blender 4.5'te uçtan uca denendi. [ ] `--from-blend` gerçek dosyayla denenmedi.
-- [x] `check`: şema, .well-known, https, sırlar, yasak varlık, GLB/üçgen/malzeme/doku bütçesi, bevel/reduced-motion/AA ipuçları. [ ] navigasyon rotası, Playwright.
-- [ ] `stage` şablonu (Fudō istasyon kamerası) ve `room` şablonu.
+Recruit contributors through public issues and PRs. Add co-maintainers based on sustained work and explicit consent. Document decisions. Legal incorporation, a council and foundation funding remain future decisions; no nonprofit status is claimed.
 
-## 0.5 — Harness sağlayıcıları
-
-- [x] `harness/client.mjs`: Claude API + Ollama + custom (https uç ya da komut); görüntü girişi (≤ 1,5 MB jpeg/png/webp); 60 s zaman aşımı; JSON zarfı çıkarma + görev başına şema doğrulama; Node ve tarayıcıda aynı dosya.
-- [x] Claude Code kurulum komutu (`harness --provider=claude-code`).
-- [ ] Astra ucu: sahibin geçidinde `POST /nexus/assist` (ziyaretçi sınıfı, davet anahtarı, kapasite); `astra.md` sözleşmesine göre.
-- [ ] `schema/harness-task.schema.json` (zarf şu an client.mjs içinde doğrulanıyor).
-
-## 0.6 — Motor paketi ve canlı servis iskeleti
-
-- [ ] `@nexus-kit/engine` npm paketi; `upgrade-engine` diff komutu; KG Atelier ve Fudō'nun ona geçişi.
-- [ ] Python ziyaretçi rehberi iskeleti (`guest_service.py` deseni: loopback, Origin, kapasite, NDJSON; sahibe özel hiçbir şey yok).
-- [ ] `os-shell` (KG/OS 98 kabuğu, boş uygulama listesi) kararı.
-
-## Sonra
-
-- EN belgeler; topluluk çağrısı; ilk üç dış mekân.
-- Federasyon: domain challenge, imzalı takip, uzak keşif, dışa/içe aktarma.
-- Blender 5.x doğrulaması; KTX2/Basis doku sıkıştırma; instancing yardımcıları.

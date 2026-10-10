@@ -1,108 +1,77 @@
-# Nexus Kit — kendi 3B mekânını kur, haritaya çık
+# Nexus Kit · places that reference each other
 
-**EN —** Nexus Kit is the open-source setup wizard and AI harness behind [fudo.tattoo](https://fudo.tattoo) and [gokhanbiyik.com](https://gokhanbiyik.com): turn a few phone photos and a hand-drawn sketch into a walkable, optimised Three.js place on your own domain, with your own keys, then appear as a point on the [Nexus atlas](https://gokhanbiyik.com/nexus/). Two paths: a browser wizard for non-technical owners and a CLI + Blender pipeline for modellers. Docs are in Turkish for now; an English translation is on the [roadmap](ROADMAP.md). Licensing follows the Blender model: the tooling is GPL-3.0, the templates/schema/protocol are Apache-2.0 (whatever you build with it is yours), the names are trademarks. Not on npm yet: `npx github:Biyikgokhan/nexus-kit doctor`.
+**An open toolkit for creative studios, artists and small spaces to build stylized 3D places on their own domains.** Connect them through HTTPS links and a small, engine-independent manifest. AI is optional.
 
-![Nexus atlası: LOD küre, mavi atmosfer, Karagümrük'e iniş](docs/img/atlas-space.png)
+[English guide](docs/en/README.md) · [Integrations](docs/INTEGRATIONS.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md)
 
-> **Rehberin Satori.** Karagümrük atölyesinin uçan droidi sihirbazda seni karşılar; 30 saniyelik tanıtımı izle: [docs/video/nexus-kit-tanitim.mp4](docs/video/nexus-kit-tanitim.mp4) · [GIF önizleme](docs/video/nexus-kit-tanitim.gif)
+![From your place to an independent network](docs/img/nexus-flow.svg)
 
-> Birkaç telefon fotoğrafı ve kâğıda çizilmiş bir kroki ile, kendi alan adında yaşayan, gezilebilir bir Three.js mekânı. Sonra Nexus atlasında bir nokta.
+## Start here
 
-Nexus Kit, [fudo.tattoo](https://fudo.tattoo) ve [biyikgokhan.com](https://gokhanbiyik.com) (KG Atelier) dünyalarının arkasındaki yöntemin açık kaynak kurulum sihirbazı ve yapay zekâ harness paketidir. İki site de 3D modelleme aracının önerdiği hazır kalıplarla değil, gerçek fotoğraf + kroki + sahibinin anlatımıyla ve optimize edilmiş bir Three.js stilizasyonuyla kuruldu. Bu paket o yöntemi herkesin kullanabileceği hâle getirir.
+Requires **Node.js 22.12+** and npm. Blender is optional. This repository is the distribution source; no npm registry package or approved app-store listing is claimed.
 
-Belgeler Türkçe yazıldı; İngilizce çeviri yol haritasında.
-
-## Ekolün örnekleri
-
-| KG Atelier — Karagümrük gece atölyesi | Fudō — Kozyatağı dövme stüdyosu |
-| --- | --- |
-| ![KG Atelier sokak](docs/img/kg-atelier-street.png) | ![Fudō diorama](docs/img/fudo.png) |
-| [gokhanbiyik.com](https://gokhanbiyik.com) · birinci şahıs, sokaktan içeri | [fudo.tattoo](https://fudo.tattoo) · diorama, tezgâha yaklaş |
-
-| Kolay yol sihirbazı (tarayıcı) | Mutfak arkası yazıları |
-| --- | --- |
-| ![Kendi mekânını kur — 6 adım](docs/img/atlas-wizard.png) | ![Vaka analizleri](docs/img/case-studies.png) |
-| [gokhanbiyik.com/nexus/#kur](https://gokhanbiyik.com/nexus/#kur) | [gokhanbiyik.com/case-studies](https://gokhanbiyik.com/case-studies/) |
-
-## Kime, ne veriyor
-
-| Sen kimsin | Hangi yol | Ne kurman gerekir | Sonuç |
-| --- | --- | --- | --- |
-| Bilişime uzak; dükkânı, atölyesi, bahçesi var; telefonla fotoğraf çekebilir, kâğıda kroki çizebilir | **Kolay yol** (tarayıcı sihirbazı) | Hiçbir şey. Modern bir tarayıcı yeter. | Statik bir ZIP: kendi alan adına yüklenir, Nexus haritasında görünür. |
-| 3B modellemeyi biliyor ya da öğrenmek istiyor; Blender açabiliyor, terminalden korkmuyor | **Modelci yolu** (CLI sihirbazı + Blender hattı) | Node 22, Blender 4.5, Git | KG Atelier / Fudō sınıfında, yürünebilir, istasyonlu, portal açan tam bir dünya. |
-
-İki yol aynı yerde birleşir: `nexus.json` manifesti → kendi HTTPS alan adının kökü → topluluk kaydı → atlasta bir nokta.
-
-## Üç ilke
-
-1. **Herkes kendi alan adında, kendi token'ıyla.** Nexus Kit hiçbir zaman senin adına barındırmaz, senin adına yapay zekâ çağırmaz, anahtarını görmez. Yapay zekâ isteğe bağlıdır; sihirbaz yapay zekâsız da biter.
-2. **Fotoğraf ve kroki yorumlanır, ölçülmüş rölöve iddia edilmez.** Manifestte bu dürüstçe yazılır (`geometry: photo-sketch-and-owner-layout-interpretation`). Görmediğin oda modellenmez; Google görüntüsü, başkasının eseri, hazır oyun varlığı pakete girmez.
-3. **Ekol tek: optimize Three.js stilizasyonu.** Bütçeler, malzeme kuralları, bevel kuralı, batch kuralı, gece paleti ve navigasyon sözleşmesi [docs/04-ART-DIRECTION.md](docs/04-ART-DIRECTION.md) içinde. Sihirbaz bu kurallardan sapan bir sahneyi paketlemez; harness bu kuralları ajanın sistem talimatı olarak taşır.
-
-## Hızlı başlangıç (tasarım hedefi)
-
-Kolay yol:
-
-```text
-1. https://gokhanbiyik.com/nexus/#kur  (statik sihirbaz; hiçbir şey yüklenmez)
-2. 3 fotoğraf + 1 kroki fotoğrafı seç
-3. Krokinin üstüne masa / koltuk / bitki / çerçeve / kapı sürükle
-4. Canlı 3B önizleme → "Paketi indir"
-5. ZIP'i kendi alan adına yükle (Vercel / Netlify / GitHub Pages / cPanel — adım adım)
-6. "Haritaya çık" → topluluk kaydına tek tıkla başvuru
+```sh
+git clone https://github.com/Biyikgokhan/nexus-kit.git
+cd nexus-kit
+npm ci
+npm run wizard
 ```
 
-Modelci yolu:
+Open the printed local URL. Choose identity, room dimensions, objects and links. Download and extract the project ZIP, then:
 
-```bash
-git clone https://github.com/Biyikgokhan/nexus-kit && cd nexus-kit && npm test   # ya da: npx github:Biyikgokhan/nexus-kit <komut>
-node bin/nexus-kit.mjs init my-place   # gereksinim kontrolü + proje iskeleti
-node bin/nexus-kit.mjs sketch              # kroki + fotoğrafları oda planına çevir (AI isteğe bağlı)
-node bin/nexus-kit.mjs blender             # Blender 4.5 background hattıyla GLB üret
-node bin/nexus-kit.mjs check               # bütçe, şema, .well-known, ekol kuralları
-node bin/nexus-kit.mjs publish             # kendi alan adına yayın ve kayıt başvurusu
+```sh
+npm install
+npm run dev
+npm run build
 ```
 
-Durum (0.2): `doctor`, `init`, `manifest`, `check`, `blender`, `harness`, `publish`, `sketch` çalışıyor (`bin/nexus-kit.mjs`, testler `tests/`). `sketch` üç yoldan plan alır: `--show` (ASCII plan), `--grid=reference/plan.txt` (çevrimdışı harf ızgarası), `--ai` (harness: Claude API, Ollama, özel uç ya da komut) ve `reference/navigation-draft.json` yazar. Yardımcı istemcisi `harness/client.mjs` (bağımlılıksız, tarayıcıda ve Node'da aynı dosya). `check --browser` yol haritasında. npm'de henüz yayımlanmadı; bu depoyu klonlayıp `node bin/nexus-kit.mjs <komut>` ya da `npm link` ile kullan. Kolay yol sihirbazı atlas sitesinde: https://gokhanbiyik.com/nexus/#kur (yayın bekliyor). Komut sözleşmesi: [docs/03-SIHIRBAZ-MODELCI-YOLU.md](docs/03-SIHIRBAZ-MODELCI-YOLU.md).
+The ZIP contains **editable source**. Build once and host its `dist/` directory on your HTTPS domain. Keep `/.well-known/nexus.json` at the domain root. Building validates `place.json` and regenerates public manifests.
 
-## Belgeler
+**Türkçe:** Sihirbazı aç, mekânını düzenle, kaynak proje ZIP’ini indir. ZIP’i açıp yukarıdaki üç komutu çalıştır. Yayına `dist/` klasörünü koy. Fotoğraflar yalnız tarayıcı içi referanstır; yüklenmez, AI’a gönderilmez, ZIP’e girmez. Yapay zekâsız da tamamlayabilirsin. Atlas kaydı ayrı başvuru ve bakımcı incelemesi gerektirir.
 
-English overview and quick start: [docs/en/README.md](docs/en/README.md).
+## What works in 0.3.0
 
-| Dosya | İçerik |
-| --- | --- |
-| [docs/00-TASARIM-OZETI.md](docs/00-TASARIM-OZETI.md) | Bir sayfada bütün tasarım: akış, kararlar, neyin var neyin yok olduğu |
-| [docs/01-GEREKSINIMLER.md](docs/01-GEREKSINIMLER.md) | Minimum bilgisayar, kurulacaklar listesi, yol yol |
-| [docs/02-SIHIRBAZ-KOLAY-YOL.md](docs/02-SIHIRBAZ-KOLAY-YOL.md) | Bilişime uzak kullanıcı için ekran ekran sihirbaz metni |
-| [docs/03-SIHIRBAZ-MODELCI-YOLU.md](docs/03-SIHIRBAZ-MODELCI-YOLU.md) | CLI sihirbazı, Blender hattı, motor şablonu |
-| [docs/04-ART-DIRECTION.md](docs/04-ART-DIRECTION.md) | Ekol: stilizasyon sözleşmesi, bütçeler, yasaklar |
-| [docs/05-HARNESS.md](docs/05-HARNESS.md) | Yapay zekâ harness'ı: kendi token'ın, yerel model, Claude, Astra; sınırlar |
-| [docs/06-PROTOKOL-VE-HARITA.md](docs/06-PROTOKOL-VE-HARITA.md) | `nexus-interlink/0.2`, barındırma, kayıt, haritada görünme |
-| [docs/07-TOPLULUK.md](docs/07-TOPLULUK.md) | Repo yapısı, katkı, kayıt defteri, lisans ayrımı |
-| [ROADMAP.md](ROADMAP.md) | Sıra: neyi önce yapıyoruz |
+- TR/EN wizard: live orbitable Three.js preview, five object types, local reference previews, source ZIP and optional AI brief.
+- Apache-licensed standalone starter: responsive text navigation, procedural room, rendered triangle/draw-call counters, GLB loading and manifests.
+- CLI scaffolding, offline sketch grids, checks, Blender export script and provider-neutral harness.
+- Claude Code and Codex skills, portable plugin manifests, three read-only local MCP tools.
+- Separate [registry](https://github.com/Biyikgokhan/nexus-registry) with human review and DNS-pinned public-network fetching.
 
-## Paket içeriği
+This starter is a small editable diorama. Photos are references; it does not reconstruct buildings. First-person movement, clickable 3D portals, photogrammetry, hosted AI, automatic atlas enrollment and the complete Fudō engine are not included. Ordinary page links remain accessible without WebGL.
 
-```text
-nexus-kit/
-  README.md               bu dosya
-  ROADMAP.md
-  docs/                   tasarım ve kullanıcı belgeleri
-  harness/                ajan-bağımsız yapay zekâ paketi
-    AGENTS.md             her ajanın okuyacağı tek talimat dosyası (Claude Code için CLAUDE.md olarak kopyalanır)
-    skills/               nexus-place · nexus-art-direction · nexus-blender · nexus-publish
-    providers/            claude-code · claude-api · ollama · astra · .env.example
-  schema/                 nexus-interlink-0.2.schema.json
-  templates/              place.example.json · kroki şablonu · README şablonu
+## Bring your creative tools
+
+Own photographs + a rough plan + your description form the brief. Model in Blender or any GLB exporter, put `place.glb` in `public/models/`, then use the starter’s load-model button. You can replace the renderer: Nexus Interlink is JSON and HTTPS, not a mandatory engine.
+
+```sh
+node bin/nexus-kit.mjs init ../my-studio --yes --name="My Studio" --url=https://studio.example
+cd ../my-studio
+npm install
+npm run dev
+node ../nexus-kit/bin/nexus-kit.mjs harness --provider=codex
+# alternatively: --provider=claude-code
 ```
 
-## Lisans
+[Integrations](docs/INTEGRATIONS.md) covers Blender, Claude, Codex and ChatGPT. You choose whether to share references with an AI provider. The wizard makes no provider calls.
 
-Blender modeli: **araç açık, mekân senin, ad bizim.**
+## Why this exists
 
-- Kurulum sihirbazı, denetçi ve harness (`bin/`, `lib/`, `harness/`, belgeler): **GPL-3.0-or-later**. Geliştirip dağıtırsan kaynağı da paylaşırsın; kapalı bir "Nexus Kit Pro" olmaz.
-- Şablonlar, `nexus-interlink` şeması ve protokol (`templates/`, `schema/`, protokol belgesi): **Apache-2.0**. Kitle kurduğun site, manifest ve modeller **senindir**; hiçbir açık kaynak yükümlülüğü taşımaz. Protokolü kendi motorunla da uygulayabilirsin.
-- "Nexus Interlink", "Nexus Kit", "Satori" adları ve logo lisans kapsamı dışındadır ([TRADEMARKS.md](TRADEMARKS.md)). Çatal serbest, ad değişir.
-- Fotoğrafların, eserlerin, logon ve alan adın senindir; paket bunlara hak vermez ([ASSETS.md](ASSETS.md)). Three.js MIT, fontlar SIL OFL, Natural Earth kamu malı ([THIRD-PARTY.md](THIRD-PARTY.md)).
+[gokhanbiyik.com](https://gokhanbiyik.com) and [fudo.tattoo](https://fudo.tattoo) interpret recognizable creative spaces as stylized worlds. The aim is a network where studios, galleries and artists reference one another while owning their hosting and work.
 
-Kapsam tablosu: [NOTICE.md](NOTICE.md). Telif: © 2026 Gökhan Bıyık.
+Production artwork, private references and services are separate from the toolkit. See the [release review](docs/RELEASE-REVIEW.md). Numbered Turkish design documents preserve the broader goals; this README and the roadmap define shipped scope.
+
+## Contribute and license
+
+```sh
+npm ci
+npm test
+npm run build:wizard
+npm pack --dry-run
+```
+
+Read [CONTRIBUTING](CONTRIBUTING.md), [SECURITY](SECURITY.md) and [GOVERNANCE](GOVERNANCE.md). Help with accessibility, mobile measurements, translations, GLB workflows or protocol interoperability.
+
+Tooling, wizard, editor, harness, skills and MCP: **GPL-3.0-or-later**. Standalone templates, schema and protocol: **Apache-2.0**. Original artwork stays yours; dependency licenses and notices still apply. Commercial use is permitted under these licenses. Names and demo media have separate terms: [scope](NOTICE.md), [third parties](THIRD-PARTY.md), [assets](ASSETS.md), [trademarks](TRADEMARKS.md).
+
+This is a maintainer-led project working toward community stewardship, not an incorporated foundation or an affiliate of Blender, Anthropic or OpenAI.
+

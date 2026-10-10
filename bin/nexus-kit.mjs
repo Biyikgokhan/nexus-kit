@@ -13,11 +13,13 @@ import {asciiPlan,parseGridPlan,applyProposal,planToNavigation} from '../lib/pla
 import {assist,PLACE_RULES} from '../lib/assist.mjs';
 import {readEnv,providerFrom} from '../lib/env.mjs';
 import {extname} from 'node:path';
-const argv=process.argv.slice(2),command=argv[0],flags=Object.fromEntries(argv.slice(1).filter(a=>a.startsWith('--')).map(a=>{const [k,v]=a.slice(2).split('=');return [k,v??true];})),positional=argv.slice(1).filter(a=>!a.startsWith('--'));
+import {fileURLToPath} from 'node:url';
+const argv=process.argv.slice(2),command=argv[0],flags=Object.fromEntries(argv.slice(1).filter(a=>a.startsWith('--')).map(a=>{const i=a.indexOf('=');return i<0?[a.slice(2),true]:[a.slice(2,i),a.slice(i+1)];})),positional=argv.slice(1).filter(a=>!a.startsWith('--'));
 const json=Boolean(flags.json),out=(text,data)=>console.log(json?JSON.stringify(data,null,2):text);
 const HELP=`nexus-kit — kendi 3B mekânını kur, haritaya çık
 
   doctor                 gereksinim kontrolü (kurmaz)
+  wizard                 yerel tarayıcı sihirbazı (127.0.0.1:5195)
   init <klasör>          proje iskeleti (place.json, harness, tools/build_place.py) · --yes ile sorusuz
   manifest               place.json → public/nexus.json + public/.well-known/nexus.json
   check [--browser]      şema, .well-known, https, sırlar, yasak varlıklar, bütçe · yeşil/sarı/kırmızı
@@ -33,9 +35,15 @@ function loadPlace(root){const p=join(root,'place.json');if(!existsSync(p))throw
 try{
  if(!command||command==='help'||flags.help){console.log(HELP);process.exit(0);}
  if(command==='doctor'){const r=await doctor();out(formatDoctor(r),r);process.exit(r.ok?0:1);}
+ else if(command==='wizard'){
+  if(flags['dry-run']){out('Yerel sihirbaz: http://127.0.0.1:5195',{url:'http://127.0.0.1:5195'});process.exit(0);}
+  const {createServer}=await import('vite');
+  const server=await createServer({configFile:fileURLToPath(new URL('../wizard/vite.config.mjs',import.meta.url))});
+  await server.listen();server.printUrls();
+ }
  else if(command==='init'){
   const dir=resolve(positional[0]||'.');
-  const answers={name:await ask('Mekânın adı','Yeni Mekân'),kind:await ask('Tür (studio · garden · simulation · gallery · shop)','studio'),url:await ask('Site adresin (https://…, boş bırakılabilir)',''),template:await ask('Motor şablonu (room · walk · stage)','room'),geometrySource:await ask('Geometri kaynağı (code · blender · both)','code'),width:await ask('Oda genişliği (m)','8'),depth:await ask('Oda derinliği (m)','6')};
+  const answers={name:flags.name||await ask('Mekânın adı','Yeni Mekân'),kind:flags.kind||await ask('Tür (studio · garden · simulation · gallery · shop)','studio'),url:flags.url||await ask('Site adresin (https://…, boş bırakılabilir)',''),template:await ask('Motor şablonu (room · walk · stage)','room'),geometrySource:await ask('Geometri kaynağı (code · blender · both)','code'),width:flags.width||await ask('Oda genişliği (m)','8'),depth:flags.depth||await ask('Oda derinliği (m)','6')};
   if(flags['dry-run']){out(`Kuru çalışma: ${dir} içine place.json, README.md, harness/, tools/build_place.py, public/.well-known yazılacaktı.`,{dir,answers});process.exit(0);}
   const r=initProject(dir,answers);
   out(`Oluşturuldu (${r.created.length}): ${r.created.join(', ')}${r.skipped.length?`\nAtlandı (zaten vardı): ${r.skipped.join(', ')}`:''}\n\nSonraki: fotoğrafları reference/photos/, krokiyi reference/sketch.jpg olarak koy; place.json › room.items doldur; npx nexus-kit manifest; npx nexus-kit check`,r);
@@ -58,7 +66,7 @@ try{
   if(!blender){out('Blender bulunamadı. npx nexus-kit doctor kurulum yolunu gösterir; --blender=<yol> ile de verebilirsin.',{ok:false});process.exit(1);}
   if(!existsSync(script)){out('tools/build_place.py yok. npx nexus-kit init . iskeleti yazar.',{ok:false});process.exit(1);}
   const glb=join(root,'public','models','place.glb');
-  if(existsSync(glb)){mkdirSync(join(root,'.runtime','backup'),{recursive:true});const backup=join(root,'.runtime','backup',`place-${new Date().toISOString().replace(/[:.]/g,'-')}.glb`);copyFileSync(glb,backup);console.log('· Yedek: '+backup);}
+  if(existsSync(glb)&&!flags['dry-run']){mkdirSync(join(root,'.runtime','backup'),{recursive:true});const backup=join(root,'.runtime','backup',`place-${new Date().toISOString().replace(/[:.]/g,'-')}.glb`);copyFileSync(glb,backup);console.log('· Yedek: '+backup);}
   const args=['--background','--python',script,'--',...(flags['from-blend']?['--from-blend',String(flags['from-blend'])]:[])];
   console.log(`· Çalıştırılıyor: ${blender} ${args.join(' ')}`);
   if(flags['dry-run'])process.exit(0);
@@ -108,3 +116,4 @@ try{
  }
  else{console.error(`Bilinmeyen komut: ${command}\n\n${HELP}`);process.exit(1);}
 }catch(e){console.error('✖ '+e.message);process.exit(1);}
+

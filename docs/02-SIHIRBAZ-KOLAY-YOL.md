@@ -1,3 +1,5 @@
+> Design reference / Tasarım hedefleri. Shipped 0.3 scope and installation: [README](../README.md). Some workflows below are planned, not implemented.
+
 # Kolay yol — tarayıcı sihirbazı (bilişime uzak kullanıcı)
 
 Adres: `https://gokhanbiyik.com/nexus/#kur` (statik sayfa; aynı sayfa ZIP olarak indirilip çevrimdışı da açılabilir). Teknik altyapı: Fudō `src/nexus/room-view.js` + `geometry.js createRoom()` + `data.js validateNode()` + `tools/nexus-zip.mjs`'in tarayıcı sürümü. Hiçbir adım sunucuya veri göndermez.
@@ -159,3 +161,4 @@ Ajan görevleri (harness `nexus-place` skill'i): `describe` (hikâye), `sketch-t
 - ZIP üretimi tarayıcıda: `nexus-zip.mjs`'in `zipFiles()` fonksiyonu Buffer'sız `Uint8Array` sürümü; motor `assets/` listesi build sırasında `wizard-assets.json`'a yazılır.
 - Fotoğraflar manifestte `data:` URI olarak değil, ZIP'te `photos/1.jpg` olarak; manifest `photos: ['photos/1.jpg']` (0.3 şema önerisi; 0.2 uyumluluğu için `data:` seçeneği de kalır).
 - Taslak `localStorage` `nexus-kit:draft`; fotoğraflar `IndexedDB`.
+

@@ -13,3 +13,10 @@ docs/video/scene-*.mp4
 node_modules/
 reference/photos/
 reference/sketch.*
+
+
+dist-wizard/
+*.tgz
+!harness/providers/.env.example
+
+.ci-place/

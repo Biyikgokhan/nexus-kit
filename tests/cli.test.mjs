@@ -4,6 +4,7 @@ import {mkdtempSync,readFileSync,writeFileSync,mkdirSync,existsSync} from 'node:
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
 import {validateManifest,manifestFrom,slug,safeUrl} from '../lib/manifest.mjs';
 import {checkProject} from '../lib/check.mjs';
 import {initProject} from '../lib/init.mjs';
@@ -44,9 +45,10 @@ test('doctor never installs and reports optional tools as optional',async()=>{
  assert.match(formatDoctor(r),/nexus-kit doctor/);
 });
 test('CLI: help, manifest and publish show commands but never run deploys',()=>{
- const bin=new URL('../bin/nexus-kit.mjs',import.meta.url).pathname.replace(/^\/([A-Z]:)/,'$1');
+ const bin=fileURLToPath(new URL('../bin/nexus-kit.mjs',import.meta.url));
  const dir=mkdtempSync(join(tmpdir(),'nexus-kit-cli-'));initProject(dir,{name:'CLI Mekânı',url:'https://cli.example/'});
  assert.match(execFileSync(process.execPath,[bin,'help'],{encoding:'utf8'}),/doctor/);
  const m=JSON.parse(execFileSync(process.execPath,[bin,'manifest','--json'],{cwd:dir,encoding:'utf8'}));assert.equal(m.ok,true);assert.equal(readFileSync(join(dir,'public','nexus.json'),'utf8'),readFileSync(join(dir,'public','.well-known','nexus.json'),'utf8'));
  const p=JSON.parse(execFileSync(process.execPath,[bin,'publish','--json','--target=netlify'],{cwd:dir,encoding:'utf8'}));assert.match(p.command,/netlify deploy/);assert.equal(p.manifestUrl,'https://cli.example/.well-known/nexus.json');assert.ok(existsSync(join(dir,'KAYIT.md')));
 });
+

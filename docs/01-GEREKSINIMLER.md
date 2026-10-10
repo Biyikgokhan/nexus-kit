@@ -1,3 +1,5 @@
+> Design reference / Tasarım hedefleri. Shipped 0.3 scope and installation: [README](../README.md). Some workflows below are planned, not implemented.
+
 # Gereksinimler ve kurulacaklar
 
 Sihirbaz ilk ekranda bu tabloyu kendisi gösterir ve makineyi kontrol eder. Buradaki değerler KG Atelier ve Fudō'nun gerçek üretim ortamından alınmıştır (Node 22.12+, Three 0.180, Vite 7, Blender 4.5 LTS). "Önerilen" sütunu iki sitenin geliştirildiği makinelere yakın bir hedeftir; "asgari" sütunu sihirbazın çalışmayı reddetmediği sınırdır.
@@ -84,3 +86,4 @@ nexus-kit doctor · 2026-09-20
 ```
 
 `doctor` hiçbir şeyi otomatik kurmaz, hiçbir anahtar okumaz; yalnızca var/yok bakar.
+
