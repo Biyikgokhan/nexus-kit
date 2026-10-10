@@ -75,3 +75,5 @@ Tooling, wizard, editor, harness, skills and MCP: **GPL-3.0-or-later**. Standalo
 
 This is a maintainer-led project working toward community stewardship, not an incorporated foundation or an affiliate of Blender, Anthropic or OpenAI.
 
+
+Language coverage / Dil kapsamı: [English & Türkçe](docs/BILINGUAL.md).

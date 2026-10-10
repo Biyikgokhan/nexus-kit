@@ -14,3 +14,7 @@ References in `reference/photos/` and `reference/sketch.*` stay out of Git. Neve
 
 [Kit instructions](https://github.com/Biyikgokhan/nexus-kit) · [Registry review](https://github.com/Biyikgokhan/nexus-registry)
 
+
+## Türkçe
+
+Node 22.12+ ile npm install, npm run dev, npm run build komutlarını çalıştır. place.json içindeki HTTPS adresini ve mekânını düzenle; derleme manifestleri yeniler. dist/ klasörünü .well-known/ dahil kendi alan adına yükle. Sayfa TR/EN arayüz sunar. Özgün içerik otomatik çevrilmez; translations.tr ve translations.en içinde name/description ekleyebilirsin. Fotoğraf, özel adres ve anahtarlarını herkese açık dosyalara koyma. Atlas kaydı ayrı bakımcı incelemesi gerektirir.

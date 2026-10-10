@@ -48,3 +48,13 @@ https://github.com/Biyikgokhan/nexus-kit
 
 Policies checked: [Stack Overflow promotion](https://stackoverflow.com/help/promotion), [Reddit spam](https://support.reddithelp.com/hc/en-us/articles/360043504051-Spam), [Three.js forum guidelines](https://discourse.threejs.org/guidelines).
 
+
+## Türkçe teknik paylaşım
+
+Nexus Interlink, bağımsız yaratıcı mekânları kök HTTPS manifesti ve normal bağlantılarla birleştirir. Projenin bakımcısıyım. Açık kaynak sürüm; TR/EN sihirbaz, prosedürel oda ve Three.js/Vite kaynak ZIP’i sunar. Blender veya diğer araçlardan GLB aktarabilir, WebGL olmasa da metin bağlantılarını kullanabilirsin.
+
+Görüntüleyici yalnız etkileşim sırasında yeniden çizer ve piksel oranını sınırlar. Gerçek üçgen/çizim çağrısı sayaçlarını gösterir; her cihaz için FPS sözü vermez. Erişilebilirlik, mobil performans ve stüdyoların ihtiyaç duyduğu varlıklar konusunda somut geri bildirim arıyoruz.
+
+Kaynak: https://github.com/Biyikgokhan/nexus-kit
+
+Görseller: docs/img/nexus-flow.svg (EN), docs/img/nexus-flow.tr.svg (TR). İki dilde de aynı kapsamı ve sınırları anlat.
