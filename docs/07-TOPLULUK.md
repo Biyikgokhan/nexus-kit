@@ -1,3 +1,5 @@
+> Design reference / Tasarım hedefleri. Shipped 0.3 scope and installation: [README](../README.md). Some workflows below are planned, not implemented.
+
 # Topluluk — repo yapısı, katkı, lisans ayrımı
 
 ## Açık kaynak yayın planı
@@ -50,3 +52,4 @@ ASSETS.md         "Bu paket senin fotoğraflarına, eserlerine, logona ve alan a
 ## İlk duyuru (taslak, 5 cümle)
 
 > İki site, sıfır hazır varlık, otuz yıllık nerd bilgisi ve bir ajanla kuruldu: fudo.tattoo ve biyikgokhan.com. Şimdi yöntemi açıyoruz. Nexus Kit: birkaç fotoğraf ve bir kroki ile kendi alan adında gezilebilir bir 3B mekân, sonra ortak atlasta bir nokta. Bilişime uzaksan tarayıcı sihirbazı; modelliyorsan Blender hattı ve ajan harness'ı. Kendi token'ın, kendi alan adın, kendi mekânın.
+

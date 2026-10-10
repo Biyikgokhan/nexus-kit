@@ -1,3 +1,5 @@
+> Design reference / Tasarım hedefleri. Shipped 0.3 scope and installation: [README](../README.md). Some workflows below are planned, not implemented.
+
 # Protokol ve harita — `nexus-interlink/0.2`, barındırma, kayıt
 
 ## Manifest
@@ -102,3 +104,4 @@ Kaldırma: sahibi issue açar ya da manifestini `410`/silinmiş hâle getirir; C
 3. Sınırlı, SSRF korumalı uzak manifest keşfi (bugün yalnız CI'da).
 4. Açık dışa/içe aktarma; topluluk yönetimi ve itiraz politikası.
 5. Google Places benzeri adres doğrulama, kullanıcıya ait kısıtlı anahtarla.
+

@@ -4,13 +4,14 @@ import {mkdtempSync,readFileSync,writeFileSync,existsSync,mkdirSync} from 'node:
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
 import {assist,extractJson,validateResult,imageBlock,envelope,listClaudeModels} from '../harness/client.mjs';
 import {asciiPlan,parseGridPlan,applyProposal,planToNavigation} from '../lib/plan.mjs';
 import {readEnv,providerFrom} from '../lib/env.mjs';
 import {initProject} from '../lib/init.mjs';
 import {checkProject} from '../lib/check.mjs';
 const example=JSON.parse(readFileSync(new URL('../templates/place.example.json',import.meta.url),'utf8'));
-const cli=new URL('../bin/nexus-kit.mjs',import.meta.url).pathname.replace(/^\/([A-Z]:)/,'$1');
+const cli=fileURLToPath(new URL('../bin/nexus-kit.mjs',import.meta.url));
 const PNG='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 test('harness client: the envelope goes out once, the key only reaches the provider, JSON is pulled out of prose and validated',async()=>{
  const calls=[];const fetcher=async(url,init)=>{calls.push({url,init});const body=JSON.parse(init.body);assert.equal(body.messages[0].content.at(-1).type,'text');assert.equal(JSON.parse(body.messages[0].content.at(-1).text).task,'describe');return {ok:true,json:async()=>({content:[{type:'text',text:'Tabii, işte:\n```json\n{"task":"describe","ok":true,"result":{"description":"Karagümrük’te küçük bir atölye. İçeride masa, yazıcı ve bir kedi.","alternatives":["Kısa bir hikâye.","Başka bir hikâye."]},"notes":["fotoğraf yoktu"],"confidence":0.7}\n```\nBaşka bir şey ister misin?'}]})};};
@@ -52,3 +53,4 @@ test('sketch CLI: --show prints the plan, --grid writes place.json only with --y
  const noAi=(()=>{try{run('sketch','--ai','--json');return '';}catch(e){return e.stdout+e.stderr;}})();assert.match(noAi,/bağlı değil/);
  writeFileSync(join(dir,'.env.local'),'NEXUS_AI_PROVIDER=claude-api\nANTHROPIC_API_KEY="sk-x" # yorum\n');assert.deepEqual(providerFrom(readEnv(dir)).config,{apiKey:'sk-x',model:undefined});
 });
+

@@ -1,3 +1,5 @@
+> Historical deployment concept. Nexus Kit does not provide an Astra guest service, account, token or hosted endpoint. Configure your own provider instead.
+
 # Sağlayıcı: Astra (davetle, ekol sahibinin geçidi)
 
 Astra, KG Atelier ve Fudō'yu kuran ajandır. Topluluk üyesi kendi token'ı yoksa, sahibinin daveti ile Astra'nın **ziyaretçi sınıfı** bir kanalını kullanabilir. Bu, Satori'nin ziyaretçi/özel kanal ayrımının aynısıdır (SATORI.md): harness dosyaları, araçlar, terminal, kişisel bellek bu hatta yoktur; yalnız Nexus görevleri.
@@ -14,3 +16,4 @@ Astra, KG Atelier ve Fudō'yu kuran ajandır. Topluluk üyesi kendi token'ı yok
 ## Ne değil
 
 Astra bakımcı değildir, PR birleştirmez, kayıt onaylamaz. Astra erişimi kit'in parçası değildir; sahibinin davetidir ve geri alınabilir.
+

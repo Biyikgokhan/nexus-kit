@@ -1,3 +1,5 @@
+> Design reference / Tasarım hedefleri. Shipped 0.3 scope and installation: [README](../README.md). Some workflows below are planned, not implemented.
+
 # Tasarım özeti — Nexus Kit kurulum sihirbazı
 
 Tarih: 20 Eylül 2026. Kaynak gerçekler: `kg_atelier` 0.11 (`src/engine/*`, `src/worlds/*`, `public/.well-known/nexus.json`), Fudō `gta` (`src/nexus/*`, `server/nexus-api.mjs`, `tools/build_shop.py`, `NEXUS.md`, `PERFORMANCE.md`, `STUDIO-RECONSTRUCTION.md`).
@@ -65,3 +67,4 @@ Kolay yol: 20–40 dakika, tamamen tarayıcıda. Modelci yolu: ilk dünya 1–3 
 ## Başarı ölçütü
 
 Bir dükkân sahibi, bir öğleden sonra, kimseye sormadan, kendi alan adında `.well-known/nexus.json` yayınlayabiliyor ve bir hafta içinde PR'ı birleşip atlasta görünüyor. Bir modelci, harness'ı Claude Code'a ya da Ollama'ya bağlayıp `nexus-kit check` yeşil olana kadar KG Atelier kalitesinde bir dünya çıkarabiliyor.
+

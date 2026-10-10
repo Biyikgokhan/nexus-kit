@@ -1,11 +1,15 @@
-# Üçüncü taraf
+# Third-party components
 
-| Bileşen | Lisans | Nerede |
+| Component | License | Use |
 | --- | --- | --- |
-| Three.js | MIT | motor şablonları ve prosedürel oda motoru bağımlılığı |
-| Barlow, DM Sans | SIL Open Font License 1.1 | motor paketi `fonts/` |
-| Natural Earth `ne_110m_land` | kamu malı | atlas küresi (nexus-atlas reposu) |
-| Vite | MIT | geliştirme ve derleme |
-| Blender | GPL (uygulama); ürettiğin dosyalar senindir | modelci yolu hattı |
+| Three.js | MIT | Wizard and standalone renderer |
+| Vite | MIT | Development and builds |
+| fflate | MIT | ZIP export |
+| @modelcontextprotocol/sdk | MIT | Local MCP |
+| Zod | MIT | Tool schemas |
+| Blender | GPL | Optional external application; not redistributed |
 
-Bu kit hiçbir fotoğraf, eser, logo, ses veya karakter modeli dağıtmaz. Örnek mekânların (KG Atelier, Fudō) içerikleri sahiplerine aittir; bkz. [ASSETS.md](ASSETS.md).
+package-lock.json records exact resolved versions and transitive dependencies. Keep dependency notices when distributing bundles. The starter uses system fonts. Site-specific fonts and datasets from original production examples are not shipped in the starter.
+
+Demo screenshots/video use the separate terms in [NOTICE.md](NOTICE.md). Generated projects exclude production services, source photography and commercial music.
+

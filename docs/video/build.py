@@ -1,8 +1,9 @@
 """Assemble the Nexus Kit teaser: 3 Seedance clips + a Ken Burns pass over the wizard screenshot, narration (Benji), title cards, GIF preview.
 Run from this folder: python build.py  (needs the Playwright ffmpeg build; edit FF if yours lives elsewhere)."""
-import subprocess,pathlib,os,json
+import subprocess,pathlib,os,json,shutil
 here=pathlib.Path(__file__).parent;img=here.parent/'img'
-FF=os.environ.get('FFMPEG') or 'C:/Users/biyik/AppData/Local/Programs/Python/Python312/Lib/site-packages/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe' # full build (pip install imageio-ffmpeg); Playwright's ffmpeg lacks mp3/x264
+FF=os.environ.get('FFMPEG') or shutil.which('ffmpeg')
+if not FF: raise SystemExit('Install ffmpeg or set FFMPEG to its executable path.')
 def run(*a):print(' '.join(str(x) for x in a)[:200]);subprocess.run([FF,'-y','-hide_banner','-loglevel','error',*map(str,a)],check=True)
 def dur(p):
  out=subprocess.run([FF,'-i',str(p)],capture_output=True,text=True).stderr
@@ -27,9 +28,10 @@ def card(name,lines,seconds):
  out=here/name;dt=''.join(f",drawtext=fontfile='{font}':text='{t}':fontcolor={c}:fontsize={s}:x=(w-text_w)/2:y={y}" for t,c,s,y in lines)
  run('-f','lavfi','-i',f'color=c=0x0f1714:s={W}x{H}:d={seconds}:r={FPS}','-f','lavfi','-i','anullsrc=r=44100:cl=mono','-t',seconds,'-vf',f"format=yuv420p{dt}",'-c:v','libx264','-c:a','aac','-shortest',out);return out
 title=card('card-title.mp4',[('NEXUS KIT','0xe9e9df',96,'h/2-90'),('kendi 3B mekânını kur, haritaya çık','0xc9b27a',36,'h/2+30'),('rehberin Satori','0x8fd3ff',26,'h/2+90')],2.4)
-end=card('card-end.mp4',[('gokhanbiyik.com/nexus/#kur','0xe9e9df',56,'h/2-60'),('github.com/Biyikgokhan/nexus-kit','0xc9b27a',34,'h/2+20'),('MIT · herkes kendi alan adında, kendi anahtarıyla','0x8fd3ff',24,'h/2+80')],3)
+end=card('card-end.mp4',[('gokhanbiyik.com/nexus/#kur','0xe9e9df',56,'h/2-60'),('github.com/Biyikgokhan/nexus-kit','0xc9b27a',34,'h/2+20'),('GPL tooling / Apache templates · herkes kendi alan adında, kendi anahtarıyla','0x8fd3ff',24,'h/2+80')],3)
 # 3) Concat with short crossfades → mp4, then a 480px GIF preview.
 lst=here/'concat.txt';lst.write_text(''.join(f"file '{p.name}'\n" for p in [title,*parts,end]),encoding='utf-8')
 run('-f','concat','-safe','0','-i',lst,'-c:v','libx264','-pix_fmt','yuv420p','-c:a','aac','-movflags','+faststart',here/'nexus-kit-tanitim.mp4')
 run('-i',here/'nexus-kit-tanitim.mp4','-vf','fps=10,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=96[p];[s1][p]paletteuse=dither=bayer','-loop','0',here/'nexus-kit-tanitim.gif')
 print('done',dur(here/'nexus-kit-tanitim.mp4'),'s')
+

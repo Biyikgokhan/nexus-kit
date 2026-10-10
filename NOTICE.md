@@ -1,14 +1,16 @@
-# Telif ve lisans kapsamı
+# Copyright and license scope
 
-Nexus Kit — Copyright (c) 2026 Gökhan Bıyık. Tüm hakları telif sahibindedir; aşağıdaki lisanslar kullanım iznidir, mülkiyet devri değildir.
+Copyright (c) 2026 Gökhan Bıyık and contributors.
 
-| Parça | Lisans | Neden |
-| --- | --- | --- |
-| `bin/`, `lib/`, `harness/`, `docs/` (protokol belgesi hariç), `tests/` — kurulum sihirbazı, denetçi, yapay zekâ harness'ı | **GPL-3.0-or-later** ([LICENSE](LICENSE)) | Aracı alıp kapalı bir ürün olarak satmak mümkün değil; türevler de açık kalır (Blender modeli). |
-| `templates/`, `schema/`, `docs/06-PROTOKOL-VE-HARITA.md` — mekân şablonu, `nexus-interlink` şeması ve protokol | **Apache-2.0** ([LICENSE-APACHE](LICENSE-APACHE)) | Kitle kurduğun mekân **senindir**: şablondan türeyen site, manifest ve modeller GPL'e tabi değildir. Protokolü herkes kendi motoruyla uygulayabilir. |
-| İsimler ve görsel kimlik: "Nexus Interlink", "Nexus Kit", "Satori", logo ve simgeler | Lisanslı **değil** ([TRADEMARKS.md](TRADEMARKS.md)) | Çatal yapabilirsin; adıyla dağıtamazsın. |
-| Ekran görüntüleri ve tanıtım videosu (`docs/img`, `docs/video`) | Her hakkı saklı; tanıtım amaçlı alıntı serbest | Örnek mekânlar (KG Atelier, Fudō) kitin parçası değildir. |
+| Component | License |
+| --- | --- |
+| bin, lib, wizard, editor, harness, mcp, plugins, tests, documentation unless excepted | GPL-3.0-or-later — [LICENSE](LICENSE) |
+| templates, schema, docs/06-PROTOKOL-VE-HARITA.md | Apache-2.0 — [LICENSE-APACHE](LICENSE-APACHE) |
+| Original docs/img/nexus-flow.svg infographic | Apache-2.0 |
+| Existing demonstration screenshots, narration and video | Rights reserved; credited use to describe this project is permitted. Not a reusable art library. |
+| Names, logos and visual identity | [Trademark policy](TRADEMARKS.md) |
 
-Kısa kural: **Aracı geliştiriyorsan paylaş (GPL). Araçla bir yer kuruyorsan o yer senin (Apache). Adı bizim.**
+GPL applies to covered tooling and its derivative distributions. It does not automatically license original artwork produced with it. Apache templates retain license/notice obligations. Commercial use is permitted under these software licenses; their full text governs.
 
-Üçüncü taraflar: [THIRD-PARTY.md](THIRD-PARTY.md). Varlık hakları: [ASSETS.md](ASSETS.md).
+The older demo video predates 0.3 and contains outdated feature/license wording. Use the README and new SVG for current release communications. Third-party dependencies retain their licenses; see [THIRD-PARTY.md](THIRD-PARTY.md).
+

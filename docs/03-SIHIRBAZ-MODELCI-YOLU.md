@@ -1,3 +1,5 @@
+> Design reference / Tasarım hedefleri. Shipped 0.3 scope and installation: [README](../README.md). Some workflows below are planned, not implemented.
+
 # Modelci yolu — CLI sihirbazı ve Blender hattı
 
 Hedef kitle: Blender açabilen, terminali kullanabilen, kendi mekânını kendisi modellemek isteyen kişi. Sonuç: KG Atelier sınıfında bir dünya (perspektif kamera, yürüyüş, A*, istasyonlar, portallar, isteğe bağlı canlı servisler) ya da Fudō sınıfında bir sahne (Blender'dan GLB, istasyon kameraları, cutaway).
@@ -154,3 +156,4 @@ Ajan hiçbir zaman `publish`'i onaysız çalıştırmaz; skill dosyaları bunu y
 ## İlk günün hedefi
 
 `init` → `sketch` (elle, 6 nesne) → `blender` (yalnız kabuk + zemin + kapı) → `dev`'de içeri yürü → `check` yeşil. Detay, ışık, ses, Satori benzeri rehber sonra gelir. Bu, KG Atelier'in gerçek sırasıdır: 0.4 mimari, 0.5 eşya, 0.6 yazıcı, 0.7 Satori, 0.8 ses, 0.11 KG/OS.
+

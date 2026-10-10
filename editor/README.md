@@ -52,7 +52,7 @@ Dünya her yüklendiğinde önce kod sahneyi kuruyor, sonra bu dosya uygulanıyo
 Kaydın doğrudan dosyaya gitmesi için yerel sunucuyu kullan:
 
 ```bash
-cd C:\Users\biyik\Desktop\kg_atelier
+cd path/to/your-place
 npm run dev
 ```
 
@@ -135,3 +135,4 @@ git push
 - Nesneler yollarıyla bulunur, örneğin `#0/#229/#5` ya da `sofa#1`: adı olanlar adıyla, olmayanlar sırasıyla. Kodda aynı gruba yeni bir nesne eklenirse sıra numaraları kayabilir. O zaman editörde düzenlemenin yanlış nesneye gittiğini görürsün; sağ panelden Sıfırla, yeniden konumla.
 - Hareket eden nesneler (kapılar, Şakir, top, Satori) her karede kodla yeniden konumlanır. Onları taşımak kalıcı olmaz.
 - Editör modunda sahne birleştirilmeden çizilir, bu yüzden biraz daha ağırdır. Normal ziyaretçi bundan etkilenmez.
+

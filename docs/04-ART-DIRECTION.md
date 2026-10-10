@@ -1,3 +1,5 @@
+> Design reference / Tasarım hedefleri. Shipped 0.3 scope and installation: [README](../README.md). Some workflows below are planned, not implemented.
+
 # Art direction — ekolün stilizasyon sözleşmesi
 
 Bu belge "bizim dokunuşumuz"un yazılı hâlidir: KG Atelier ve Fudō'nun optimize Three.js stilizasyonu. `nexus-kit check` bu belgedeki ölçülebilir kuralları denetler; `harness/skills/nexus-art-direction` aynı kuralları ajana taşır. Sayılar iki sitenin gerçek ölçümlerinden türetilmiştir (`reference/geometry-v6.json`, Fudō `PERFORMANCE.md`).
@@ -121,3 +123,4 @@ Web Audio, HRTF `PannerNode`, dinleyici kamerayı izler. Kaynaklar prosedürel (
 ## 12. Yeni nesne türleri (0.3 önerisi)
 
 `counter` (tezgâh), `shelf` (raf), `bed` (sedye/yatak), `sign` (tabela, emissive), `machine` (yazıcı/cihaz, `dynamic` alt ağaç). Kolay yol paleti bunları 0.3 şemasıyla açar; 0.2 okuyucular bilinmeyen türü `table` gibi çizer (şemada `fallback` alanı).
+
