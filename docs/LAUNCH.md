@@ -4,24 +4,72 @@ Use after the kit is publicly readable; the maintenance registry stays private. 
 
 Live wizard: [English](https://gokhanbiyik.com/nexus-kit/?lang=en) · [Türkçe](https://gokhanbiyik.com/nexus-kit/). These are prepared announcement drafts, not a record of posts already published.
 
-## Reddit / r/threejs or your profile
+## Reddit publication status / Reddit yayın durumu
 
-Title: Open-source toolkit for small stylized 3D studios that link to each other
+Prepared on 2026-10-10. No Reddit posts have been submitted. These communities are candidates, not confirmed posting permissions. The browser currently requires Reddit human verification and account sign-in; the web reader did not expose the communities' current rule text. Check the rules and required flair in the signed-in interface before submitting. If a community restricts promotion, use its designated thread or leave it out. Record actual permalinks below only after verifying submission.
 
-I'm the maintainer of Nexus Interlink, inspired by the spaces at fudo.tattoo and gokhanbiyik.com.
+2026-10-10 tarihinde hazırlandı. Henüz Reddit gönderisi yayınlanmadı. Aşağıdaki topluluklar adaydır; paylaşım izinleri doğrulanmış değildir. Tarayıcıda insan doğrulaması ve hesap girişi gerekiyor. Güncel kurallar ve gerekli etiket paylaşım öncesi kontrol edilecek; tanıtımı kısıtlayan toplulukta uygun sabit başlık kullanılacak veya paylaşım yapılmayacak.
 
-The idea is simple: each artist or studio hosts its own stylized place and publishes a small HTTPS JSON manifest. Ordinary links connect the places. No central account, mandatory AI provider or proprietary renderer is required.
+## Reddit / r/threejs — English technical introduction
 
-Each participant supplies their own domain and hosting. Connection requests are public GitHub issues reviewed by a maintainer; this adds no hosted backend or per-visitor proxy for the project.
+Title: Nexus Kit: an open-source Three.js starter for studios on their own domains
 
-Nexus Kit 0.3 has a TR/EN browser wizard, an orbitable Three.js room, editable source ZIP export, GLB loading, and optional Claude/Codex skills plus local read-only MCP tools. Photos stay local in the wizard. Blender and other GLB exporters fit the same workflow.
+Hi everyone, I maintain Nexus Interlink. The project grew out of the stylized spaces at fudo.tattoo and gokhanbiyik.com, and I wanted to make the basic workflow reusable for other artists and small studios.
 
-This is an early diorama starter, not photogrammetry or the complete production-site engine. The exported project needs a Node build. I'd especially value feedback on mobile performance, accessible navigation and what studios need for a reusable asset library.
+The idea is that each place lives on its owner's domain, with links to other places. A small JSON manifest at `/.well-known/nexus.json` describes the place and those links. The connection format is independent of the renderer, so using Three.js isn't a requirement for joining.
 
-Source: https://github.com/Biyikgokhan/nexus-kit
-Try the wizard: https://gokhanbiyik.com/nexus-kit/?lang=en
-Connection requests: https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml
-GPL tooling; Apache templates. Your original artwork remains yours.
+The current Nexus Kit starter includes:
+
+- A Turkish/English browser wizard with an orbitable Three.js room and editable objects.
+- An editable Three.js/Vite source ZIP, GLB loading and ordinary text links alongside the 3D view.
+- A renderer that draws on demand, caps pixel ratio and exposes triangle/draw-call counters.
+
+You can refine a scene in Blender or another tool that exports GLB. There's also an optional AI brief workflow and Claude/Codex tooling; the wizard itself makes no AI requests, and reference photos stay in browser memory.
+
+This is an early diorama starter. The export needs a Node build before deployment; it doesn't reconstruct buildings from photos or include the full engine behind the reference sites. Each owner supplies their own hosting. Directory requests are reviewed manually, while direct links between places work independently.
+
+[Try the wizard](https://gokhanbiyik.com/nexus-kit/?lang=en) · [Source and setup](https://github.com/Biyikgokhan/nexus-kit)
+
+Tooling is GPL-3.0-or-later; exported templates and the protocol are Apache-2.0. Your original artwork remains yours.
+
+I'd appreciate feedback on the GLB workflow and accessible navigation in particular. If you were adapting this for a small studio, which part would you want to replace first?
+
+## Reddit / r/SideProject — English project introduction
+
+Title: I open-sourced a kit for artists to build 3D studios on their own websites
+
+I maintain Nexus Interlink, a small project that grew out of building stylized versions of creative spaces. I wanted artists and studios to be able to host their own place and link to one another, while keeping control of their files and domain.
+
+The first public version is Nexus Kit: a Turkish/English setup wizard where you arrange a small 3D room, add links and download the editable source. It uses Three.js, accepts GLB models from tools such as Blender, and can be used with or without an AI assistant.
+
+The connection part is deliberately small: each site publishes a JSON file describing its place and links. Owners provide their own hosting. Anyone can request a listing through the public GitHub form; entries are reviewed before appearing in the shared directory.
+
+You can [try the wizard here](https://gokhanbiyik.com/nexus-kit/?lang=en). [The source, licenses and setup instructions are on GitHub](https://github.com/Biyikgokhan/nexus-kit).
+
+It's still an early starter. Exported projects need to be built with Node/npm, so deployment is the main technical step today. I'd like to hear from people who make portfolios or run small creative spaces: would a linked 3D place be useful to you, and where would this setup get in your way?
+
+## Reddit / r/CodingTR — Türkçe proje ve mimari paylaşımı
+
+Başlık: Kendi alan adında çalışan 3B atölyeler için açık kaynak başlangıç kiti: Nexus Kit
+
+Merhaba, Nexus Interlink projesini geliştiriyorum. Çıkış noktası fudo.tattoo ve gokhanbiyik.com'daki stilize mekânlardı. Bu yaklaşımı, başka sanatçıların ve küçük stüdyoların da kendi araçlarıyla kullanabileceği bir başlangıca dönüştürmek istedim.
+
+Fikir şu: herkes kendi 3B mekânını kendi domain ve hostinginde yayınlıyor; mekânlar birbirine bağlantı veriyor. Bağlantı yapısını, sitenin kökündeki `/.well-known/nexus.json` dosyası tanımlıyor. Bu dosya mekânın adı, adresi ve diğer mekânlara bağlantıları gibi bilgileri taşıyor. Aynı motoru kullanma zorunluluğu yok.
+
+Açık kaynak olarak yayınladığım Nexus Kit'te bugün şunlar var:
+
+- Türkçe/İngilizce kurulum sihirbazı ve düzenlenebilir Three.js oda önizlemesi.
+- Kaynak proje ZIP'i; Blender gibi araçlardan GLB model kullanma yolu.
+- 3B görünümün yanında normal metin bağlantıları.
+- İsteğe bağlı AI tasarım özeti ve Claude/Codex araçları. Sihirbazın kendisi AI çağrısı yapmıyor; referans fotoğrafları tarayıcıda kalıyor.
+
+Şu an küçük bir diorama başlangıcı. Fotoğraftan otomatik bina çıkarmıyor; dışa aktarılan projeyi Node/npm ile derleyip yayınlamak gerekiyor. Domain ve hosting katılımcıya ait. Ortak atlasa katılmak için GitHub'dan başvuru yapılabiliyor; başvurular insan incelemesinden geçiyor. Mekânların birbirine doğrudan link vermesi için bu onay gerekmiyor.
+
+[Sihirbazı dene](https://gokhanbiyik.com/nexus-kit/) · [Kaynak kod ve kurulum](https://github.com/Biyikgokhan/nexus-kit)
+
+Araçlar GPL-3.0-or-later, başlangıç şablonları ve protokol Apache-2.0 lisanslı. Özgün eserlerin hakları üreticisinde kalıyor.
+
+Özellikle mobil kullanım, GLB aktarımı ve kurulumun anlaşılabilirliği konusunda yorumlarınızı duymak isterim. Kendi portfolyonuz ya da stüdyonuz için uyarlayacak olsanız ilk eksik bulacağınız şey ne olurdu?
 
 ## Three.js forum / Showcase
 
