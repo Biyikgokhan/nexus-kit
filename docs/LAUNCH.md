@@ -1,6 +1,6 @@
 # Launch copy and publishing notes
 
-Use only after both core repositories are publicly readable. Identify yourself as the maintainer. Do not present design goals as shipped features. The original SVG in docs/img/nexus-flow.svg is Apache-2.0; credit the project. No media generation credits were spent.
+Use after the kit is publicly readable; the maintenance registry stays private. Identify yourself as the maintainer. Do not present design goals as shipped features. The original SVG in docs/img/nexus-flow.svg is Apache-2.0; credit the project. No media generation credits were spent.
 
 ## Reddit / r/threejs or your profile
 
@@ -15,7 +15,7 @@ Nexus Kit 0.3 has a TR/EN browser wizard, an orbitable Three.js room, editable s
 This is an early diorama starter, not photogrammetry or the complete production-site engine. The exported project needs a Node build. I'd especially value feedback on mobile performance, accessible navigation and what studios need for a reusable asset library.
 
 Source: https://github.com/Biyikgokhan/nexus-kit
-Registry: https://github.com/Biyikgokhan/nexus-registry
+Connection requests: https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml
 GPL tooling; Apache templates. Your original artwork remains yours.
 
 ## Three.js forum / Showcase

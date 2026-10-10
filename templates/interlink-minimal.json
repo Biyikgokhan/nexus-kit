@@ -1,0 +1,17 @@
+{
+  "protocol": "nexus-interlink/0.2",
+  "id": "my-studio",
+  "name": "My Studio / Atölyem",
+  "url": "https://your-studio.example/",
+  "kind": "studio",
+  "description": "A creative place on its own host / Kendi sunucusunda yaratıcı bir mekân.",
+  "engine": "your-renderer",
+  "room": null,
+  "links": [
+    {
+      "object": "Another studio / Başka bir atölye",
+      "relation": "portal",
+      "url": "https://another-studio.example/"
+    }
+  ]
+}

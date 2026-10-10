@@ -12,5 +12,5 @@ Use English in code and TR/EN wording for new wizard features. Explain added dep
 
 Contributions follow [NOTICE.md](NOTICE.md). Use `git commit -s` when you can make the Developer Certificate of Origin assertion. Automation must not invent a human sign-off. Copyright is not transferred.
 
-[Registry submissions](https://github.com/Biyikgokhan/nexus-registry) · [Security reporting](SECURITY.md)
+[Registry submissions](https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml) · [Security reporting](SECURITY.md)
 

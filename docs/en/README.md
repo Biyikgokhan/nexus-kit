@@ -8,7 +8,7 @@ Build an independently hosted stylized place, then link to other places.
 4. Optional reference photos stay in browser memory and are excluded from export.
 5. Extract the source ZIP. Run `npm install`, `npm run dev`, then `npm run build`.
 6. Deploy `dist/` including `.well-known/` on your HTTPS domain. Project-subpath hosting needs a custom domain or a separately hosted root manifest.
-7. Review your public manifest and [request registry review](https://github.com/Biyikgokhan/nexus-registry/issues/new?template=place-registration.yml).
+7. Review your public manifest and [request registry review](https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml).
 
 Edit `place.json`; builds regenerate public manifests. Put a Blender/other modeller GLB at `public/models/place.glb` and use the page’s model button. Text links work without WebGL.
 

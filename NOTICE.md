@@ -6,7 +6,7 @@ Copyright (c) 2026 Gökhan Bıyık and contributors.
 | --- | --- |
 | bin, lib, wizard, editor, harness, mcp, plugins, tests, documentation unless excepted | GPL-3.0-or-later — [LICENSE](LICENSE) |
 | templates, schema, docs/06-PROTOKOL-VE-HARITA.md | Apache-2.0 — [LICENSE-APACHE](LICENSE-APACHE) |
-| Original docs/img/nexus-flow.svg infographic | Apache-2.0 |
+| Original docs/img/nexus-flow*.svg infographic | Apache-2.0 |
 | Existing demonstration screenshots, narration and video | Rights reserved; credited use to describe this project is permitted. Not a reusable art library. |
 | Names, logos and visual identity | [Trademark policy](TRADEMARKS.md) |
 

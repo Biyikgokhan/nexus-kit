@@ -35,7 +35,7 @@ The ZIP contains **editable source**. Build once and host its `dist/` directory 
 - Apache-licensed standalone starter: responsive text navigation, procedural room, rendered triangle/draw-call counters, GLB loading and manifests.
 - CLI scaffolding, offline sketch grids, checks, Blender export script and provider-neutral harness.
 - Claude Code and Codex skills, portable plugin manifests, three read-only local MCP tools.
-- Separate [registry](https://github.com/Biyikgokhan/nexus-registry) with human review and DNS-pinned public-network fetching.
+- Public bilingual [connection requests](https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml), with human review and a private maintenance registry.
 
 This starter is a small editable diorama. Photos are references; it does not reconstruct buildings. First-person movement, clickable 3D portals, photogrammetry, hosted AI, automatic atlas enrollment and the complete Fudō engine are not included. Ordinary page links remain accessible without WebGL.
 
@@ -53,6 +53,10 @@ node ../nexus-kit/bin/nexus-kit.mjs harness --provider=codex
 ```
 
 [Integrations](docs/INTEGRATIONS.md) covers Blender, Claude, Codex and ChatGPT. You choose whether to share references with an AI provider. The wizard makes no provider calls.
+
+## Host yourself, request a connection / Kendin barındır, bağlantı iste
+
+[Self-hosting and the open protocol / Kendi sunucunda kurulum ve açık protokol](docs/SELF-HOST.md). Each place uses its own HTTPS host. No paid AI or Nexus-hosted server is required. Hosting costs stay with each participant. / Her mekân kendi HTTPS sunucusunu kullanır; ücretli AI veya Nexus sunucusu gerekmez. Domain/hosting gideri katılımcıya aittir.
 
 ## Why this exists
 
