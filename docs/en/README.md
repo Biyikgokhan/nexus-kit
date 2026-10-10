@@ -2,6 +2,8 @@
 
 Build an independently hosted stylized place, then link to other places.
 
+Open the [live English wizard](https://gokhanbiyik.com/nexus-kit/?lang=en) to start in your browser, or follow steps 1–3 to run it locally. Building the exported project still requires Node.js and npm.
+
 1. Install Node.js 22.12+ and Git.
 2. Clone this repository, run `npm ci`, then `npm run wizard`.
 3. Choose English. Edit identity, room and links.
