@@ -62,6 +62,8 @@ node ../nexus-kit/bin/nexus-kit.mjs harness --provider=codex
 
 ## Why this exists
 
+Participants can introduce Nexus and recommend other places through ordinary links on their own sites. Each owner chooses their neighbours; reciprocal links are optional. The [TR/EN HTML example](docs/SELF-HOST.md#discovery-through-your-own-site--kendi-siten-üzerinden-keşif) adds visible links beside any 3D view without a tracking script. / Katılımcılar kendi sitelerinde Nexus'u tanıtıp seçtikleri komşu mekânlara bağlantı verebilir. Karşı bağlantı isteğe bağlıdır; rehberde takip betiği gerektirmeyen Türkçe/İngilizce HTML örneği var.
+
 [gokhanbiyik.com](https://gokhanbiyik.com) and [fudo.tattoo](https://fudo.tattoo) interpret recognizable creative spaces as stylized worlds. The aim is a network where studios, galleries and artists reference one another while owning their hosting and work.
 
 Production artwork, private references and services are separate from the toolkit. See the [release review](docs/RELEASE-REVIEW.md). Numbered Turkish design documents preserve the broader goals; this README and the roadmap define shipped scope.
