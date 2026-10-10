@@ -86,8 +86,8 @@ try{
   const commands={vercel:'vercel deploy --prod',netlify:'netlify deploy --prod --dir dist',cloudflare:'wrangler pages deploy dist','github-pages':'dist/ içeriğini gh-pages dalına gönder; CNAME ve .nojekyll dist içinde olmalı',manual:'dist/ içeriğini alan adının köküne yükle; .well-known gizli klasörünü unutma'};
   const site=m.url||'https://<alan-adin>/',kayit=`# Nexus kayıt başvurusu\n- Mekân: ${m.name}\n- Manifest: ${new URL('/.well-known/nexus.json',site).href}\n- Tür: ${m.kind} · Adres: ${m.address||'dijital'} · Bağlı merkez: ${m.anchorId||'—'}\n- Hikâye: ${m.description}\n- [ ] Fotoğraflar bana ait ya da izinliyim.\n- [ ] Ekol kurallarını (04-ART-DIRECTION) okudum.\n- [ ] Manifestimi ben yayınlıyorum; kaldırmak istersem issue açarım.\n`;
   if(!flags['dry-run'])writeFileSync(join(root,'KAYIT.md'),kayit);
-  const repo=process.env.NEXUS_REGISTRY_REPO||'Biyikgokhan/nexus-registry';
-  out(`Yayın komutu (SEN çalıştırırsın; kit çalıştırmaz):\n\n  npm run build\n  ${commands[target]||commands.manual}\n\nSonra doğrula:\n\n  curl -sI ${new URL('/.well-known/nexus.json',site).href}\n\nKayıt başvurusu (KAYIT.md yazıldı):\n\n  gh issue create --repo ${repo} --template place-registration.yml --title "Kayıt: ${m.name}" --body-file KAYIT.md\n`,{target,command:commands[target]||commands.manual,manifestUrl:new URL('/.well-known/nexus.json',site).href,registry:repo});
+  const repo=process.env.NEXUS_REGISTRY_REPO||'Biyikgokhan/nexus-kit';
+  out(`Yayın komutu (SEN çalıştırırsın; kit çalıştırmaz):\n\n  npm run build\n  ${commands[target]||commands.manual}\n\nSonra doğrula:\n\n  curl -sI ${new URL('/.well-known/nexus.json',site).href}\n\nKayıt başvurusu (KAYIT.md yazıldı):\n\n  gh issue create --repo ${repo} --template place-connection.yml --title "Kayıt: ${m.name}" --body-file KAYIT.md\n`,{target,command:commands[target]||commands.manual,manifestUrl:new URL('/.well-known/nexus.json',site).href,registry:repo});
  }
  else if(command==='sketch'){
   // Three ways in, one way out: place.json › room/stations/obstacles + reference/navigation-draft.json. Nothing is written without --yes (or --dry-run shows).

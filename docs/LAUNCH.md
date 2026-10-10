@@ -1,6 +1,6 @@
 # Launch copy and publishing notes
 
-Use only after both core repositories are publicly readable. Identify yourself as the maintainer. Do not present design goals as shipped features. The original SVG in docs/img/nexus-flow.svg is Apache-2.0; credit the project. No media generation credits were spent.
+Use after the kit is publicly readable; the maintenance registry stays private. Identify yourself as the maintainer. Do not present design goals as shipped features. The original SVG in docs/img/nexus-flow.svg is Apache-2.0; credit the project. No media generation credits were spent.
 
 ## Reddit / r/threejs or your profile
 
@@ -15,7 +15,7 @@ Nexus Kit 0.3 has a TR/EN browser wizard, an orbitable Three.js room, editable s
 This is an early diorama starter, not photogrammetry or the complete production-site engine. The exported project needs a Node build. I'd especially value feedback on mobile performance, accessible navigation and what studios need for a reusable asset library.
 
 Source: https://github.com/Biyikgokhan/nexus-kit
-Registry: https://github.com/Biyikgokhan/nexus-registry
+Connection requests: https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml
 GPL tooling; Apache templates. Your original artwork remains yours.
 
 ## Three.js forum / Showcase
@@ -48,3 +48,13 @@ https://github.com/Biyikgokhan/nexus-kit
 
 Policies checked: [Stack Overflow promotion](https://stackoverflow.com/help/promotion), [Reddit spam](https://support.reddithelp.com/hc/en-us/articles/360043504051-Spam), [Three.js forum guidelines](https://discourse.threejs.org/guidelines).
 
+
+## Türkçe teknik paylaşım
+
+Nexus Interlink, bağımsız yaratıcı mekânları kök HTTPS manifesti ve normal bağlantılarla birleştirir. Projenin bakımcısıyım. Açık kaynak sürüm; TR/EN sihirbaz, prosedürel oda ve Three.js/Vite kaynak ZIP’i sunar. Blender veya diğer araçlardan GLB aktarabilir, WebGL olmasa da metin bağlantılarını kullanabilirsin.
+
+Görüntüleyici yalnız etkileşim sırasında yeniden çizer ve piksel oranını sınırlar. Gerçek üçgen/çizim çağrısı sayaçlarını gösterir; her cihaz için FPS sözü vermez. Erişilebilirlik, mobil performans ve stüdyoların ihtiyaç duyduğu varlıklar konusunda somut geri bildirim arıyoruz.
+
+Kaynak: https://github.com/Biyikgokhan/nexus-kit
+
+Görseller: docs/img/nexus-flow.svg (EN), docs/img/nexus-flow.tr.svg (TR). İki dilde de aynı kapsamı ve sınırları anlat.

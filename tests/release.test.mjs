@@ -5,13 +5,23 @@ import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {starterFiles} from '../lib/starter.mjs';
+import {starterFiles,aiBrief} from '../lib/starter.mjs';
+import {validateManifest} from '../lib/manifest.mjs';
 import {initProject} from '../lib/init.mjs';
 import {setupHarness} from '../lib/harness.mjs';
 import {Client} from '@modelcontextprotocol/sdk/client/index.js';
 import {StdioClientTransport} from '@modelcontextprotocol/sdk/client/stdio.js';
 const kit=fileURLToPath(new URL('..',import.meta.url));
 const readTree=(dir,root=dir,out={})=>{for(const e of readdirSync(dir,{withFileTypes:true})){const p=join(dir,e.name);if(e.isDirectory())readTree(p,root,out);else out[p.slice(root.length+1).replaceAll('\\','/')]=readFileSync(p,'utf8');}return out;};
+test('English and Turkish export guidance and validation respect selected language',()=>{
+ assert.match(validateManifest({url:'http://bad'},'en').join(' '),/HTTPS without credentials/);
+ assert.match(validateManifest({url:'http://bad'},'tr').join(' '),/kimlik bilgisi/);
+ assert.match(aiBrief({language:'tr'}),/Türkçe yanıt ver/);
+ assert.match(aiBrief({language:'en'}),/Reply in English/);
+ const files=starterFiles({language:'tr',name:'Atölye',url:'https://studio.example',kind:'studio',description:'Merhaba',room:{width:8,depth:6,items:[]},links:[],translations:{en:{name:'Studio',description:'Hello',apiKey:'PRIVATE-TEST-VALUE'},tr:{name:'Atölye',description:'Merhaba'}}},readTree(join(kit,'templates/site')));
+ assert.ok(files['README.tr.md']);assert.ok(files['src/i18n.js']);
+ assert.equal(JSON.parse(files['place.json']).translations.en.name,'Studio');assert.ok(!JSON.stringify(files).includes('PRIVATE-TEST-VALUE'));
+});
 test('wizard exports a complete source site without private photos or credentials',()=>{
  const sources=readTree(join(kit,'templates/site'));sources.LICENSE=readFileSync(join(kit,'LICENSE-APACHE'),'utf8');
  const files=starterFiles({name:'Open Studio',kind:'studio',url:'https://studio.example',description:'A shared workbench.',room:{width:8,depth:6,items:[]},links:[],photos:['data:image/png;base64,AAAA'],apiKey:'PRIVATE-TEST-VALUE',extensions:{private:'PRIVATE-TEST-VALUE'}},sources);

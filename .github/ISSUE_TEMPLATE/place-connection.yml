@@ -1,0 +1,50 @@
+name: Connect a place / Mekânını bağla
+description: Request a reviewed link for a place on your own HTTPS host / Kendi sunucundaki mekân için bağlantı talebi.
+title: "Interlink: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **EN:** You host your own place and manifest. This public issue requests review for the Nexus directory; it does not upload or host your site. No AI account or fee is required by the protocol. Domain/hosting costs remain yours. Do not share private references or credentials. Review is manual; there is no automatic approval or response-time promise.
+        
+        **TR:** Mekân ve manifest kendi sunucunda kalır. Bu herkese açık başvuru Nexus dizini için inceleme talebidir; siteni yüklemez veya barındırmaz. Protokol AI hesabı ya da ücret gerektirmez; domain/hosting maliyeti sana aittir. Özel referans veya anahtar paylaşma. İnceleme manueldir; otomatik onay veya süre sözü yoktur.
+  - type: input
+    id: name
+    attributes:
+      label: Place name / Mekân adı
+    validations:
+      required: true
+  - type: input
+    id: manifest
+    attributes:
+      label: HTTPS manifest URL / HTTPS manifest adresi
+      placeholder: https://your-studio.example/.well-known/nexus.json
+      description: Exact root path on your host / Sunucunun kökündeki tam adres.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind / Tür
+      options: [studio, gallery, shop, garden, simulation]
+    validations:
+      required: true
+  - type: textarea
+    id: story
+    attributes:
+      label: Short introduction (EN / TR) / Kısa tanıtım (TR / EN)
+      description: Use either language or both. Only public information. / Birini veya ikisini kullan. Yalnız açık bilgiler.
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Confirm / Doğrula
+      options:
+        - label: I control this place's host and may share its content. / Bu mekânın sunucusunu yönetiyorum ve içeriğini paylaşma hakkım var.
+          required: true
+        - label: This issue and my manifest contain only intended public information. / Başvuru ve manifest yalnız paylaşmak istediğim açık bilgileri içerir.
+          required: true
+        - label: I request a public directory link and understand review is required. / Açık dizin bağlantısı istiyorum ve inceleme gerektiğini biliyorum.
+          required: true
+

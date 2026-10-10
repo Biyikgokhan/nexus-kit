@@ -34,7 +34,7 @@ description: Manifest üretimi (nexus.json + .well-known), yayın komutunu göst
 - [ ] Manifestimi ben yayınlıyorum; kaldırmak istersem issue açarım.
 ```
 
-7. Başvuru komutunu göster: `gh issue create --repo <org>/nexus-registry --template place-registration.yml --title "Kayıt: <name>" --body-file KAYIT.md`. `gh` yoksa şablon bağlantısı.
+7. Başvuru komutunu göster: `gh issue create --repo Biyikgokhan/nexus-kit --template place-connection.yml --title "Kayıt: <name>" --body-file KAYIT.md`. `gh` yoksa şablon bağlantısı.
 
 ## Alt klasör
 
@@ -47,3 +47,4 @@ Python ziyaretçi rehberi/defter varsa: yalnız loopback'te çalışır; dışa 
 ## Yapma
 
 Deploy/push/issue çalıştırmak; alan adı DNS'ine dokunmak; `check` kırmızıyken yayın; sırları `dist`e sokmak; "yayında" demek doğrulamadan.
+
