@@ -62,7 +62,9 @@ You can [try the wizard here](https://gokhanbiyik.com/nexus-kit/?lang=en). [The 
 
 It's still an early starter. Exported projects need to be built with Node/npm, so deployment is the main technical step today. I'm hopeful younger makers will take this further than I can imagine. If it sparks your curiosity, I'd love to tinker together — especially on making setup easier for artists and small studios.
 
-## Reddit / r/CodingTR — Türkçe proje ve mimari paylaşımı
+## Türkçe proje ve mimari paylaşımı — genel taslak
+
+Bu taslak r/CodingTR için kullanılmayacak: [kural 2](https://www.reddit.com/r/CodingTR/wiki/rules/) tamamı yapay zekâyla oluşturulmuş gönderileri yasaklıyor. Metin, bu tür içeriğe izin veren başka bir yerde kullanılmak üzere korunuyor.
 
 Başlık: Kendi alan adında çalışan 3B atölyeler için açık kaynak başlangıç kiti: Nexus Kit
 
@@ -90,6 +92,24 @@ Açık kaynak olarak yayınladığım Nexus Kit'te bugün şunlar var:
 Araçlar GPL-3.0-or-later, başlangıç şablonları ve protokol Apache-2.0 lisanslı. Özgün eserlerin hakları üreticisinde kalıyor.
 
 Genç üreticilerin bu fikri benim hayal ettiğimden daha ileriye taşıyabileceğine inanıyorum. Merak edenlerle birlikte kurcalayıp geliştirmek isterim. Özellikle mobil kullanım, GLB aktarımı ve kurulumun anlaşılabilirliği konusunda yorumlarınızı duymak güzel olur.
+
+## Reddit / r/acikkaynak — Türkçe açık kaynak yazılım paylaşımı
+
+Başlık: Nexus Kit: kendi sitenizde yayınlayabileceğiniz 3B atölyeler için açık kaynak başlangıç kiti
+
+Merhaba, ben Gökhan. Kendi kendine öğrenerek yetişmiş, motion tasarım ve sanat yönetimi ağırlıklı 20 yılı aşkın profesyonel deneyimi olan bir tasarımcıyım. Nexus Interlink'i tasarım kararları, görsel referanslar ve yinelemeli promptlarla yönlendirdiğim AI destekli bir proje olarak geliştiriyorum.
+
+Sanatçıların ve küçük stüdyoların kendi alan adlarında stilize bir mekân kurup birbirlerine bağlantı verebilmelerini istiyorum. Bunun için hazırladığım Nexus Kit'i açık kaynak yayınladım. Türkçe/İngilizce sihirbazda küçük bir Three.js odası düzenlenebiliyor; düzenlenebilir kaynak proje ZIP olarak indirilebiliyor. Blender gibi araçlardan GLB model kullanma yolu da var.
+
+Bağlantı tarafı basit: sitenin kökündeki `/.well-known/nexus.json` dosyası mekânı ve komşu bağlantılarını tanımlıyor. Herkes kendi domain ve hostingini kullanıyor. Site sahibi seçtiği atölyeleri görünür HTML bağlantılarıyla önerebiliyor; karşı bağlantı zorunlu değil. Doğrudan bağlantılar merkezi dizin onayı gerektirmiyor; bakımını yaptığım atlas için başvurular ayrıca inceleniyor.
+
+Araçlar GPL-3.0-or-later, başlangıç şablonları ve protokol Apache-2.0 lisanslı. Özgün eserlerin hakları üreticisinde kalıyor. Kiti kullanmak için AI hizmeti veya aboneliği gerekmiyor.
+
+Bu hâlâ erken bir başlangıç. Fotoğraflardan otomatik bina üretmiyor; indirilen projeyi Node/npm ile derleyip HTTPS sunan bir hostta yayınlamak gerekiyor. Kurulumun teknik olmayan kullanıcılar için daha anlaşılır olması gereken yerleri var.
+
+[Kaynak kod ve kurulum](https://github.com/Biyikgokhan/nexus-kit) · [Sihirbazı dene](https://gokhanbiyik.com/nexus-kit/)
+
+Genç üreticilerin bu fikri benim hayal ettiğimden daha ileriye taşıyabileceğine inanıyorum. Merak edenlerle birlikte kurcalayıp geliştirmek isterim. Özellikle kurulum rehberindeki eksikleri ve bağımsız siteler arasındaki bu bağlantı biçiminin sizce neyi kolaylaştıracağını duymak isterim.
 
 ## Three.js forum / Showcase
 
@@ -147,7 +167,8 @@ Policies checked: [Stack Overflow promotion](https://stackoverflow.com/help/prom
 | --- | --- | --- |
 | [r/threejs](https://www.reddit.com/r/threejs/) | Three.js starter, GLB and accessible navigation | Candidate; live rules and account eligibility still need checking. |
 | [r/SideProject](https://www.reddit.com/r/SideProject/) | Why it exists, working demo and simpler onboarding | Candidate; live rules and account eligibility still need checking. |
-| [r/CodingTR](https://www.reddit.com/r/CodingTR/) | Turkish introduction, open protocol, AI-assisted design | Candidate; project-sharing rules and account eligibility still need checking. |
+| [r/acikkaynak](https://www.reddit.com/r/acikkaynak/) | Turkish open-source kit, licensing and self-hosting | Candidate: rules allow relevant project promotion. Use an original software post, choose the current appropriate flair, and recheck composer rules and account eligibility. No closed-source product recommendations. |
+| [r/CodingTR rules](https://www.reddit.com/r/CodingTR/wiki/rules/) | Turkish software development | Excluded from this AI-authored campaign: rule 2 prohibits posts written entirely with AI. Do not disguise or paraphrase around that restriction. |
 | [r/selfhosted](https://www.reddit.com/r/selfhosted/) | Static output on the participant's own HTTPS host | New projects belong in the current New Project Megathread. Prepare a top-level comment using its requested fields, not a separate launch post. |
 | [r/webdev](https://www.reddit.com/r/webdev/) | Browser wizard, export/build flow and engineering limitations | Excluded from this AI-authored campaign: rule 8 prohibits LLM-generated posts/comments, including on Showoff Saturday. |
 | [Three.js Showcase](https://discourse.threejs.org/) | Technical walkthrough and visible demo | Relevant forum; account sign-in required. |
