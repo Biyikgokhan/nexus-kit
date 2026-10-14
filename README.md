@@ -8,9 +8,13 @@
 
 ## Start here
 
-**Try the live wizard:** [English](https://gokhanbiyik.com/nexus-kit/?lang=en) · [Türkçe](https://gokhanbiyik.com/nexus-kit/). Create your source ZIP in the browser, then build it on your computer. To run the wizard locally, use the commands below.
+**Try the live wizard:** [English](https://gokhanbiyik.com/nexus-kit/?lang=en) · [Türkçe](https://gokhanbiyik.com/nexus-kit/). Choose identity, room, objects and links. Download **Ready-to-publish site ZIP**, extract it and upload its contents to your own HTTPS website's root. **No Node/npm is required for this export.** Include hidden .well-known/ and follow the bilingual START-HERE.txt in the ZIP. Hosting/domain costs remain yours; registry inclusion requires manual review.
 
-Requires **Node.js 22.12+** and npm. Blender is optional. This repository is the distribution source; no npm registry package or approved app-store listing is claimed.
+**Türkçe:** Sihirbazda mekânını düzenle, **Yayına hazır site ZIP’i** indir, içindeki dosyaları kendi HTTPS sitenin köküne yükle. Node/npm gerekmez. Gizli .well-known/ dizinini de yükle; ZIP içindeki START-HERE.txt Türkçe/İngilizce rehberdir. Domain/hosting gideri sana aittir. Fotoğraflar yalnız tarayıcı içi referanstır; yüklenmez, AI’a gönderilmez, ZIP’e girmez. Atlas kaydı ayrı başvuru ve bakımcı incelemesi gerektirir.
+
+### Optional developer workflow / İsteğe bağlı kaynak kod yolu
+
+Running the wizard locally or building the separate **Source code ZIP** requires **Node.js 22.12+** and npm. Blender is optional. No npm registry package or approved app-store listing is claimed.
 
 ```sh
 git clone https://github.com/Biyikgokhan/nexus-kit.git
@@ -19,7 +23,7 @@ npm ci
 npm run wizard
 ```
 
-Open the printed local URL. Choose identity, room dimensions, objects and links. Download and extract the project ZIP, then:
+For code-level customization, extract the **Source code ZIP**, then run:
 
 ```sh
 npm install
@@ -27,13 +31,15 @@ npm run dev
 npm run build
 ```
 
-The ZIP contains **editable source**. Build once and host its `dist/` directory on your HTTPS domain. Keep `/.well-known/nexus.json` at the domain root. Building validates `place.json` and regenerates public manifests.
+Host the source project's dist/ directory, including hidden files. Builds validate place.json and regenerate public manifests. Keep /.well-known/nexus.json at your domain root.
 
-**Türkçe:** Sihirbazı aç, mekânını düzenle, kaynak proje ZIP’ini indir. ZIP’i açıp yukarıdaki üç komutu çalıştır. Yayına `dist/` klasörünü koy. Fotoğraflar yalnız tarayıcı içi referanstır; yüklenmez, AI’a gönderilmez, ZIP’e girmez. Yapay zekâsız da tamamlayabilirsin. Atlas kaydı ayrı başvuru ve bakımcı incelemesi gerektirir.
+To edit a ready-to-publish export, reimport its place.json backup into the wizard and download a fresh ZIP. Editing that backup alone does not change the embedded site. Preview through an HTTP(S) server, not by double-clicking index.html.
+
+**Türkçe:** Kodla düzenleme için ayrı kaynak ZIP’ini indir, yukarıdaki komutlarla derle ve dist/ klasörünü yayınla. Hazır paketi değiştirmek için yedek place.json dosyasını sihirbaza geri aktar ve yeni paket indir. Siteyi HTTP(S) sunucusunda aç; index.html dosyasına çift tıklamak desteklenen önizleme değildir.
 
 ## What works in 0.3.0
 
-- TR/EN wizard: live orbitable Three.js preview, five object types, local reference previews, source ZIP and optional AI brief.
+- TR/EN wizard: live orbitable Three.js preview, five object types, local reference previews, ready-to-publish site ZIP, separate source ZIP and optional AI brief.
 - Apache-licensed standalone starter: responsive text navigation, procedural room, rendered triangle/draw-call counters, GLB loading and manifests.
 - CLI scaffolding, offline sketch grids, checks, Blender export script and provider-neutral harness.
 - Claude Code and Codex skills, portable plugin manifests, three read-only local MCP tools.
@@ -43,7 +49,7 @@ This starter is a small editable diorama. Photos are references; it does not rec
 
 ## Bring your creative tools
 
-Own photographs + a rough plan + your description form the brief. Model in Blender or any GLB exporter, put `place.glb` in `public/models/`, then use the starter’s load-model button. You can replace the renderer: Nexus Interlink is JSON and HTTPS, not a mandatory engine.
+Own photographs + a rough plan + your description form the brief. Model in Blender or any GLB exporter, put `place.glb` in `models/` in the ready site (or `public/models/` in the source project), then use the starter’s load-model button. You can replace the renderer: Nexus Interlink is JSON and HTTPS, not a mandatory engine.
 
 ```sh
 node bin/nexus-kit.mjs init ../my-studio --yes --name="My Studio" --url=https://studio.example

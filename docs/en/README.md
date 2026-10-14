@@ -1,20 +1,20 @@
-# Nexus Kit 0.3 quick start
+# Nexus Kit quick start
 
-Build an independently hosted stylized place, then link to other places.
+1. Open the [live English wizard](https://gokhanbiyik.com/nexus-kit/?lang=en).
+2. Edit identity, room and links. Reference photos stay in browser memory and are excluded from export.
+3. Download **Ready-to-publish site ZIP**. No Node/npm is required for this path.
+4. Extract and upload its contents to your own HTTPS website's root, including hidden .well-known/. Follow START-HERE.txt. You provide the domain and hosting.
+5. Open your site and https://your-domain/.well-known/nexus.json. A project subfolder alone cannot serve the domain-root manifest.
+6. Review the public data and [request registry review](https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml). This is manual review, not automatic enrollment.
 
-Open the [live English wizard](https://gokhanbiyik.com/nexus-kit/?lang=en) to start in your browser, or follow steps 1–3 to run it locally. Building the exported project still requires Node.js and npm.
+The site needs an HTTP(S) server; double-clicking index.html is not a supported preview. To change the exported place, reimport the included place.json into the wizard and download a fresh ZIP. Editing that backup alone does not update the embedded site.
 
-1. Install Node.js 22.12+ and Git.
-2. Clone this repository, run `npm ci`, then `npm run wizard`.
-3. Choose English. Edit identity, room and links.
-4. Optional reference photos stay in browser memory and are excluded from export.
-5. Extract the source ZIP. Run `npm install`, `npm run dev`, then `npm run build`.
-6. Deploy `dist/` including `.well-known/` on your HTTPS domain. Project-subpath hosting needs a custom domain or a separately hosted root manifest.
-7. Review your public manifest and [request registry review](https://github.com/Biyikgokhan/nexus-kit/issues/new?template=place-connection.yml).
+Put a self-contained GLB at models/place.glb and use the page's model button. Text links work without WebGL. External decoder-dependent GLBs require custom renderer configuration.
 
-Edit `place.json`; builds regenerate public manifests. Put a Blender/other modeller GLB at `public/models/place.glb` and use the page’s model button. Text links work without WebGL.
+## Optional developer workflow
 
-The AI brief is a manual workflow: paste into your chosen assistant, review its JSON, then import it. No direct ChatGPT account connection or hosted MCP endpoint is included.
+Install Node.js 22.12+ and Git. Clone this repository, run npm ci, then npm run wizard to run the wizard locally. For custom code, select the separate **Source code ZIP**, extract it, then run npm install, npm run dev and npm run build. Host dist/, including hidden files. Source models belong in public/models/; source builds validate place.json and regenerate public manifests.
 
-[Integrations](../INTEGRATIONS.md) · [Licenses](../../NOTICE.md) · [Roadmap](../../ROADMAP.md)
+The AI brief is a manual workflow: paste into your chosen assistant, review its JSON, then import it. No direct ChatGPT account connection or hosted MCP endpoint is included. AI is optional.
 
+[TR/EN hosting guide](../SELF-HOST.md) · [Integrations](../INTEGRATIONS.md) · [Licenses](../../NOTICE.md)

@@ -2,19 +2,21 @@ import './style.css';
 import { zipSync, strToU8 } from 'fflate';
 import { createWorld } from '../templates/site/src/world.js';
 import { starterFiles, aiBrief } from '../lib/starter.mjs';
+import { readySiteFiles } from '../lib/ready-site.mjs';
+import readyRuntime from 'virtual:nexus-ready-runtime';
 import { manifestFrom, validateManifest, slug } from '../lib/manifest.mjs';
 import license from '../LICENSE-APACHE?raw';
 
 const sources = Object.fromEntries(Object.entries(import.meta.glob('../templates/site/**/*', {query:'?raw',import:'default',eager:true})).map(([p,s])=>[p.replace('../templates/site/',''),s]));
 sources['public/.nojekyll']=''; sources.LICENSE=license;
 const $=s=>document.querySelector(s), message=$('#message');
-let step=0, language=new URLSearchParams(location.search).get('lang')==='en'?'en':'tr', world, photos=[], extraLinks=[], lastMetrics;
+let step=0, language=new URLSearchParams(location.search).get('lang')==='en'?'en':'tr', world, photos=[], extraLinks=[], importedOptions={}, lastMetrics;
 const say=(tr,en)=>language==='tr'?tr:en;
 const types={table:['Masa','Table'],seat:['Koltuk','Seat'],plant:['Bitki','Plant'],frame:['Eser','Artwork'],portal:['Geçit','Portal']};
 const seedLabels={worktable:['Çalışma masası','Workbench'],plant:['Bitki','Plant'],seat:['Birlikte düşün','Think together'],portal:['Başka bir dünya','Another world']};
 let items=[{id:'worktable',type:'table',x:0,z:-.8,label:''},{id:'plant',type:'plant',x:-2.7,z:-2,label:''},{id:'seat',type:'seat',x:2,z:0,label:''},{id:'portal',type:'portal',x:2.7,z:-2.5,label:''}];
 
-function read(){return {id:slug($('#name').value),name:$('#name').value,kind:$('#kind').value,url:$('#url').value,description:$('#description').value,language,room:{width:Number($('#width').value),depth:Number($('#depth').value),items},links:[...($('#link-url').value?[{object:$('#link-label').value,relation:'portal',url:$('#link-url').value}]:[]),...extraLinks]};}
+function read(){return {...importedOptions,id:slug($('#name').value),name:$('#name').value,kind:$('#kind').value,url:$('#url').value,description:$('#description').value,language,room:{width:Number($('#width').value),depth:Number($('#depth').value),items},links:[...($('#link-url').value?[{object:$('#link-label').value,relation:'portal',url:$('#link-url').value}]:[]),...extraLinks]};}
 function metrics(m){lastMetrics=m;$('#metrics').textContent=m.triangles.toLocaleString(language==='tr'?'tr-TR':'en-US')+say(' üçgen · ',' tris · ')+m.drawCalls+say(' çizim',' calls');}
 function translate(){
  document.documentElement.lang=language;document.title=say('Nexus Kit — Mekânını kur','Nexus Kit — Build your place');
@@ -78,6 +80,9 @@ $('#import').onchange=async e=>{
   const errors=validateManifest(m,language);if(errors.length)throw Error(errors.join('\n'));
   if(!m.room)throw Error(say('Bu sihirbaz için bir oda gerekli.','This wizard requires a room.'));
   for(const key of ['name','url','kind','description']){$('#'+key).value=m[key];$('#'+key).dataset.edited='true';}
+  // Preserve only validated public options when editing an exported project.
+  const clean=JSON.parse(starterFiles(p,sources)['place.json']);
+  importedOptions={palette:clean.palette,translations:clean.translations};
   $('#width').value=m.room.width;$('#depth').value=m.room.depth;items=m.room.items;
   for(const id of Object.keys(seedLabels))delete seedLabels[id];
   extraLinks=m.links.slice(1);$('#link-label').value=m.links[0]?.object||'';$('#link-url').value=m.links[0]?.url||'';
@@ -86,8 +91,15 @@ $('#import').onchange=async e=>{
 };
 $('#download').onclick=()=>{
  try{
+  const p=read(),files=readySiteFiles(p,sources,readyRuntime);
+  download(slug(p.name)+'-site.zip',zipSync(Object.fromEntries(Object.entries(files).map(([name,text])=>[name,strToU8(text)]))),'application/zip');
+  message.append(document.createTextNode(say(' — ZIP’i aç; içindekileri kendi HTTPS sitenin köküne yükle. Node/npm gerekmez. START-HERE.txt rehberini izle.',' — Extract and upload the contents to your own HTTPS site root. No Node/npm needed. Follow START-HERE.txt.')));
+ }catch(err){message.textContent=err.message;}
+};
+$('#download-source').onclick=()=>{
+ try{
   const p=read(),files=starterFiles(p,sources);
-  download(slug(p.name)+'.zip',zipSync(Object.fromEntries(Object.entries(files).map(([name,text])=>[name,strToU8(text)]))),'application/zip');
+  download(slug(p.name)+'-source.zip',zipSync(Object.fromEntries(Object.entries(files).map(([name,text])=>[name,strToU8(text)]))),'application/zip');
   message.append(document.createTextNode(say(' — ZIP’i aç, npm install ve npm run dev çalıştır.',' — Extract, run npm install and npm run dev.')));
  }catch(err){message.textContent=err.message;}
 };

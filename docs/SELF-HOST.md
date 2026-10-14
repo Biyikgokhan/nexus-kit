@@ -4,7 +4,7 @@
 
 Nexus Interlink is an Apache-2.0 JSON/HTTPS protocol. It requires no Nexus account, paid AI, mandatory renderer or hosted Nexus backend. Each participant pays for or supplies their own domain/hosting. The project does not promise free hosting or pay participants' bills.
 
-1. Build a place with the wizard, Blender/GLB workflow or your own renderer.
+1. Build a place with the wizard, Blender/GLB workflow or your own renderer. The wizard’s **Ready-to-publish site ZIP** is prebuilt: extract and upload its contents including hidden .well-known/; no Node/npm is needed. START-HERE.txt gives EN/TR instructions. The separate source ZIP requires Node 22.12+ and npm.
 2. Publish your site on your own HTTPS origin.
 3. Serve a public manifest at `https://your-host/.well-known/nexus.json`. Use [the minimal example](../templates/interlink-minimal.json) and [schema](../schema/nexus-interlink-0.2.schema.json). Return JSON with no redirect. Keep it under 256 KiB for the directory verifier. Use public IPv4 hosting for the current verifier.
 4. Put normal HTTPS URLs in `links`. Two places can link directly without waiting for a directory.
@@ -18,7 +18,7 @@ Exact coordinates and business addresses are optional. Never publish a private h
 
 Nexus Interlink, Apache-2.0 lisanslı JSON/HTTPS protokolüdür. Nexus hesabı, ücretli AI, zorunlu motor veya Nexus’un barındırdığı bir sunucu gerektirmez. Her katılımcı kendi domain/hostingini sağlar; proje ücretsiz barındırma sözü vermez veya başkalarının faturasını üstlenmez.
 
-1. Sihirbazla, Blender/GLB yoluyla veya kendi motorunla mekânını üret.
+1. Sihirbazla, Blender/GLB yoluyla veya kendi motorunla mekânını üret. **Yayına hazır site ZIP’i** önceden derlenmiştir: açıp gizli .well-known/ dahil içindekileri yükle; Node/npm gerekmez. START-HERE.txt Türkçe/İngilizce rehberdir. Ayrı kaynak kod ZIP’i Node 22.12+ ve npm ister.
 2. Kendi HTTPS adresinde yayınla.
 3. Sunucunun kökünde `/.well-known/nexus.json` sun. [En küçük örneği](../templates/interlink-minimal.json) ve [şemayı](../schema/nexus-interlink-0.2.schema.json) kullan. Yönlendirmesiz JSON döndür. Dizin doğrulayıcısı için 256 KiB altında ve açık IPv4 üzerinden erişilebilir olsun.
 4. `links` alanına normal HTTPS bağlantıları ekle. İki mekân dizin onayını beklemeden birbirine bağlanabilir.

@@ -5,6 +5,7 @@ import {ui} from './i18n.js';
 import './style.css';
 let language=place.language==='tr'?'tr':'en',state='ready',lastMetrics;
 const $=s=>document.querySelector(s),nav=$('#links'),seen=new Set();
+nav.replaceChildren();
 for(const link of [...(place.links||[]),...(place.room?.items||[]).filter(o=>o.target).map(o=>({url:o.target,object:o.label||o.type}))]){
  let url;try{url=new URL(link.url||link.target);if(url.protocol!=='https:'||url.username||url.password)continue;}catch{continue;}
  if(seen.has(url.href))continue;seen.add(url.href);

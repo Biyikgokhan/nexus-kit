@@ -1,3 +1,4 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
-export default defineConfig({ root:fileURLToPath(new URL('.',import.meta.url)), base:'./', server:{host:'127.0.0.1',port:5195,strictPort:true}, build:{outDir:'../dist-wizard',emptyOutDir:true} });
+import { readyRuntimePlugin } from '../lib/ready-site-build.mjs';
+export default defineConfig({ plugins:[readyRuntimePlugin()], root:fileURLToPath(new URL('.',import.meta.url)), base:'./', server:{host:'127.0.0.1',port:5195,strictPort:true}, build:{outDir:'../dist-wizard',emptyOutDir:true} });

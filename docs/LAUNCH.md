@@ -1,3 +1,5 @@
+> **Setup update / Kurulum güncellemesi — 2026-10-14:** The current wizard exports a ready-to-host site ZIP requiring no end-user Node/npm, plus a separate developer source ZIP. Older drafts below that say every export requires a Node build describe the previous release. Verify the live wizard before claiming a deployment is complete. / Güncel sihirbaz Node/npm gerektirmeyen hazır site ZIP’i ve ayrı geliştirici kaynak ZIP’i üretir. Aşağıdaki eski taslaklarda her kurulum için Node istenmesi önceki sürüme aittir. Yayın tamamlandı demeden canlı sihirbazı kontrol et.
+
 # Launch copy and publishing notes
 
 Use after the kit is publicly readable; the maintenance registry stays private. Identify yourself as the maintainer and disclose that the project was developed with AI assistance under your design direction and prompting. Keep the personal introduction brief. Do not present design goals as shipped features. The original SVG in docs/img/nexus-flow.svg is Apache-2.0; credit the project. No media generation credits were spent.
