@@ -2,15 +2,31 @@
 
 # Launch copy and publishing notes
 
-Use after the kit is publicly readable; the maintenance registry stays private. Identify yourself as the maintainer and disclose that the project was developed with AI assistance under your design direction and prompting. Keep the personal introduction brief. Do not present design goals as shipped features. The original SVG in docs/img/nexus-flow.svg is Apache-2.0; credit the project. No media generation credits were spent.
+Use after the kit is publicly readable; the maintenance registry stays private. Identify yourself as the maintainer and disclose that the project was developed with AI assistance under your design direction and prompting. Keep the personal introduction brief. Do not present design goals as shipped features. The original SVG in docs/img/nexus-flow.svg is Apache-2.0; credit the project. The original SVG needed no generation credits. An additional bilingual concept illustration was generated with Higgsfield on 2026-10-14; its cost estimate was 0.25 credits. It is labelled as a concept, not a product screenshot.
 
 Live wizard: [English](https://gokhanbiyik.com/nexus-kit/?lang=en) · [Türkçe](https://gokhanbiyik.com/nexus-kit/). These are prepared announcement drafts, not a record of posts already published.
 
-## Reddit publication status / Reddit yayın durumu
+## Publication record / Yayın kaydı — 2026-10-14
 
-Prepared on 2026-10-10. No Reddit posts have been submitted. The browser currently requires Reddit human verification and account sign-in; Chrome automation is also blocked by an open extension panel. Research findings below distinguish candidates from excluded communities. Confirm current rules, flair and account eligibility before submitting. Record actual permalinks only after verifying submission.
+Six Reddit submissions were verified at submission time on 2026-10-14. This does not establish continuing moderator approval or reach. Do not repost removed or filtered material. A public Facebook post was also verified. No Instagram, X, LinkedIn, Threads or DEV publication is claimed here.
 
-2026-10-10 tarihinde hazırlandı. Henüz Reddit gönderisi yayınlanmadı. Aşağıdaki topluluklar adaydır; paylaşım izinleri doğrulanmış değildir. Tarayıcıda insan doğrulaması ve hesap girişi gerekiyor. Güncel kurallar ve gerekli etiket paylaşım öncesi kontrol edilecek; tanıtımı kısıtlayan toplulukta uygun sabit başlık kullanılacak veya paylaşım yapılmayacak.
+14 Ekim’de altı Reddit paylaşımı gönderim sırasında doğrulandı. Bu, sürekli moderatör onayı veya erişim sayısı anlamına gelmez. Kaldırılan/filtrelenen içeriği tekrar gönderme. Herkese açık Facebook paylaşımı da doğrulandı. Burada Instagram, X, LinkedIn, Threads veya DEV yayını iddia edilmiyor.
+
+- [r/threejs](https://www.reddit.com/r/threejs/comments/1x5v3ts/nexus_kit_an_opensource_threejs_starter_for/)
+- [r/acikkaynak](https://www.reddit.com/r/acikkaynak/comments/1x5v6e2/nexus_kit_kendi_sitenizde_3b_at%C3%B6lyeler_kurmak/)
+- [r/SideProject](https://www.reddit.com/r/SideProject/comments/1x5vbpw/i_opensourced_a_small_kit_for_artists_to_build_3d/)
+- [r/selfhosted — New Project Megathread comment](https://www.reddit.com/r/selfhosted/comments/1x145j7/comment/pgpr6gp/)
+- [r/indieweb](https://www.reddit.com/r/indieweb/comments/1x5vfz8/nexus_interlink_a_small_experiment_in_linking/)
+- [r/webgl](https://www.reddit.com/r/webgl/comments/1x5vhgg/nexus_kit_opensource_threejs_diorama_starter_with/)
+- [Facebook — EN/TR, AI-labelled concept image](https://www.facebook.com/biyikgokhan/posts/pfbid0RqF2GVUpndGUSMP2aBogudkDxpEeog8UewbwK2CsgGYw8NcDWukFWjyLE61SE141l)
+
+## Current announcement / Güncel duyuru
+
+Nexus Kit now exports a ready-to-host site ZIP from its EN/TR wizard without requiring end-user Node/npm. The developer source ZIP remains available. This is a free open-source, AI-assisted early diorama starter; users supply their own domain and hosting. Interlink uses normal HTTPS links and a public JSON manifest. Directory inclusion requires separate human review. I'd love to tinker together on accessibility, mobile performance and Blender/GLB workflows.
+
+Nexus Kit'in TR/EN sihirbazı artık son kullanıcıdan Node/npm istemeden yayına hazır site ZIP’i üretiyor. Geliştirici kaynak ZIP’i ayrıca var. Ücretsiz, açık kaynak, AI destekli erken bir diorama başlangıcı; kullanıcı kendi domain ve hostingini sağlar. Interlink, normal HTTPS bağlantıları ve açık JSON manifesti kullanır. Dizine eklenme ayrıca insan incelemesi gerektirir. Erişilebilirlik, mobil performans ve Blender/GLB akışları üzerinde birlikte kurcalayıp geliştirmek isterim.
+
+Below are historical channel drafts. Update their installation wording using the current announcement and verify each community's rules before submitting. / Aşağıdakiler eski kanal taslaklarıdır; kurulum ifadelerini güncel duyuruya göre düzelt ve her topluluğun güncel kurallarını kontrol et.
 
 Voice / Üslup: invite people to explore and improve the project together. Use "I'd love to tinker together" naturally, alongside a concrete area for feedback. Express trust in younger makers without assigning them an obligation or promising resources. / İnsanları birlikte denemeye ve geliştirmeye davet et; "birlikte kurcalayıp geliştirmek isterim" ifadesini somut bir katkı alanıyla kullan. Genç üreticilere güveni anlatırken onlara görev yükleme veya sağlanmayan kaynaklar vaat etme.
 
